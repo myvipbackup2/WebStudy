@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多级菜单</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+        ul,ol{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+            display: block;
+            line-height: 30px;
+            text-align: center;
+            color: #000;
+        }
+        #main-menu .main-menu{
+            width: 100px;
+            height: 30px;
+            background-color: gray;
+            float: left;
+            margin-right: 10px;
+        }
+        #main-menu .main-menu:hover{
+            background-color: deepskyblue;
+        }
+        #main-menu .main-menu>a:hover{
+            color: #fff;
+        }
+        #main-menu .sub-menu{
+            /*display: none;*/
+        }
+        #main-menu .sub-menu li{
+            background-color: darkgrey;
+        }
+        #main-menu .sub-menu a{
+            border-bottom: 1px dashed black;
+            text-indent: 5px;
+            text-align: left;
+            color: blue;
+        }
+        #main-menu .sub-menu li:hover{
+            background-color: skyblue;
+        }
+        #main-menu .sub-menu li>a:hover{
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<ul id="main-menu">
+    <li class="main-menu">
+        <a href="#">link1</a>
+        <ul class="sub-menu">
+            <li><a href="#">sub1</a></li>
+            <li><a href="#">sub2</a></li>
+            <li><a href="#">sub3</a></li>
+            <li><a href="#">sub4</a></li>
+        </ul>
+    </li>
+    <li class="main-menu">
+        <a href="#">link2</a>
+        <ul class="sub-menu">
+            <li><a href="#">sub1</a></li>
+            <li><a href="#">sub2</a></li>
+            <li><a href="#">sub3</a></li>
+            <li><a href="#">sub4</a></li>
+        </ul>
+    </li>
+    <li class="main-menu">
+        <a href="#">link3</a>
+        <ul class="sub-menu">
+            <li><a href="#">sub1</a></li>
+            <li><a href="#">sub2</a></li>
+            <li><a href="#">sub3</a></li>
+            <li><a href="#">sub4</a></li>
+        </ul>
+    </li>
+</ul>
+
+
+<script>
+    var sub = document.getElementsByClassName('.sub-menu');
+    var main =document.getElementsByClassName('.main-menu');
+    main.onmouseup=function () {
+
+    }
+</script>
+</body>
+</html>
