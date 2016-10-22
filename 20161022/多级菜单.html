@@ -32,7 +32,7 @@
             color: #fff;
         }
         #main-menu .sub-menu{
-            /*display: none;*/
+            display: none;
         }
         #main-menu .sub-menu li{
             background-color: darkgrey;
@@ -84,11 +84,23 @@
 
 
 <script>
-    var sub = document.getElementsByClassName('.sub-menu');
-    var main =document.getElementsByClassName('.main-menu');
-    main.onmouseup=function () {
-
+    var oMenu = document.getElementById('main-menu');
+//    var aSub = oMenu.getElementsByClassName('sub-menu');
+//    var aMain =oMenu.getElementsByClassName('main-menu');
+    var aLi = oMenu.getElementsByTagName('li');
+    for (var i=0;i<aLi.length;i++){
+        if (aLi[i].className == 'main-menu'){
+                aLi[i].onmouseover = function () {
+                    var oSub = this.getElementsByTagName('ul')[0];
+                    oSub.style.display = 'block';
+                };
+                aLi[i].onmouseout = function () {
+                    var oSub = this.getElementsByTagName('ul')[0];
+                    oSub.style.display = 'none';
+                };
+        }
     }
+
 </script>
 </body>
 </html>
