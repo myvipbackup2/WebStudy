@@ -79,15 +79,29 @@
     //        }
 
 
+    //    var oMenu = document.getElementById('menu');
+    //    var aLi = oMenu.children;
+    //    for (var i = 0; i < aLi.length; i++) {
+    //        aLi[i].onclick = function () {
+    //            var oSub = this.children[1];
+    //            if (oSub.style.display == 'block') {
+    //                oSub.style.display = 'none';
+    //            } else {
+    //                oSub.style.display = 'block';
+    //            }
+    //        }
+    //    }
+
     var oMenu = document.getElementById('menu');
-    var aLi = oMenu.children;
-    for (var i = 0; i < aLi.length; i++) {
-        aLi[i].onclick = function () {
-            var oSub = this.children[1];
-            if (oSub.style.display == 'block') {
-                oSub.style.display = 'none';
-            } else {
-                oSub.style.display = 'block';
+    var aH3 = oMenu.getElementsByTagName('h3');
+    var aUl = oMenu.getElementsByTagName('ul');
+    for(var i=0;i<aH3.length;i++){
+        aH3[i].index = i;
+        aH3[i].onclick = function () {
+            if (aUl[this.index].style.display == 'block'){
+                aUl[this.index].style.display = 'none';
+            }else{
+                aUl[this.index].style.display = 'block';
             }
         }
     }
