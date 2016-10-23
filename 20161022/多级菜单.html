@@ -4,49 +4,59 @@
     <meta charset="UTF-8">
     <title>多级菜单</title>
     <style>
-        *{
+        * {
             margin: 0;
-            padding:0;
+            padding: 0;
         }
-        ul,ol{
+
+        ul, ol {
             list-style: none;
         }
-        a{
+
+        a {
             text-decoration: none;
             display: block;
             line-height: 30px;
             text-align: center;
             color: #000;
         }
-        #main-menu .main-menu{
+
+        #main-menu .main-menu {
             width: 100px;
             height: 30px;
             background-color: gray;
             float: left;
             margin-right: 10px;
         }
-        #main-menu .main-menu:hover{
+
+        #main-menu .main-menu:hover {
             background-color: deepskyblue;
         }
-        #main-menu .main-menu>a:hover{
+
+        #main-menu .main-menu > a:hover {
             color: #fff;
         }
-        #main-menu .sub-menu{
+
+        #main-menu .sub-menu {
             display: none;
         }
-        #main-menu .sub-menu li{
+
+        #main-menu .sub-menu li {
             background-color: darkgrey;
         }
-        #main-menu .sub-menu a{
+
+        #main-menu .sub-menu a {
             border-bottom: 1px dashed black;
             text-indent: 5px;
             text-align: left;
             color: blue;
         }
-        #main-menu .sub-menu li:hover{
+
+        #main-menu .sub-menu li:hover {
             background-color: skyblue;
         }
-        #main-menu .sub-menu li>a:hover{
+
+        #main-menu .sub-menu li > a:hover {
             color: white;
         }
     </style>
@@ -85,32 +95,32 @@
 
 <script>
 
-//    var oMenu = document.getElementById('main-menu');
-//    var aLi = oMenu.getElementsByTagName('li');
-//    for (var i=0;i<aLi.length;i++){
-//        if (aLi[i].className == 'main-menu'){
-//                aLi[i].onmouseover = function () {
-//                    var oSub = this.getElementsByTagName('ul')[0];
-//                    oSub.style.display = 'block';
-//                };
-//                aLi[i].onmouseout = function () {
-//                    var oSub = this.getElementsByTagName('ul')[0];
-//                    oSub.style.display = 'none';
-//                };
-//        }
-//    }
+    //    var oMenu = document.getElementById('main-menu');
+    //    var aLi = oMenu.getElementsByTagName('li');
+    //    for (var i=0;i<aLi.length;i++){
+    //        if (aLi[i].className == 'main-menu'){
+    //                aLi[i].onmouseover = function () {
+    //                    var oSub = this.getElementsByTagName('ul')[0];
+    //                    oSub.style.display = 'block';
+    //                };
+    //                aLi[i].onmouseout = function () {
+    //                    var oSub = this.getElementsByTagName('ul')[0];
+    //                    oSub.style.display = 'none';
+    //                };
+    //        }
+    //    }
 
     var oMenu = document.getElementById('main-menu');
     var aLi = oMenu.children; //子代选择器
-    for (var i=0;i<aLi.length;i++){
-            aLi[i].onmouseover = function () {
-                var oSub = this.children[1];
-                oSub.style.display = 'block';
-            };
-            aLi[i].onmouseout = function () {
-                var oSub = this.children[1];
-                oSub.style.display = 'none';
-            };
+    for (var i = 0; i < aLi.length; i++) {
+        aLi[i].onmouseover = function () {
+            var oSub = this.children[1];
+            oSub.style.display = 'block';
+        };
+        aLi[i].onmouseout = function () {
+            var oSub = this.children[1];
+            oSub.style.display = 'none';
+        };
     }
 
 
