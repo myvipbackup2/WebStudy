@@ -84,22 +84,35 @@
 
 
 <script>
+
+//    var oMenu = document.getElementById('main-menu');
+//    var aLi = oMenu.getElementsByTagName('li');
+//    for (var i=0;i<aLi.length;i++){
+//        if (aLi[i].className == 'main-menu'){
+//                aLi[i].onmouseover = function () {
+//                    var oSub = this.getElementsByTagName('ul')[0];
+//                    oSub.style.display = 'block';
+//                };
+//                aLi[i].onmouseout = function () {
+//                    var oSub = this.getElementsByTagName('ul')[0];
+//                    oSub.style.display = 'none';
+//                };
+//        }
+//    }
+
     var oMenu = document.getElementById('main-menu');
-//    var aSub = oMenu.getElementsByClassName('sub-menu');
-//    var aMain =oMenu.getElementsByClassName('main-menu');
-    var aLi = oMenu.getElementsByTagName('li');
+    var aLi = oMenu.children; //子代选择器
     for (var i=0;i<aLi.length;i++){
-        if (aLi[i].className == 'main-menu'){
-                aLi[i].onmouseover = function () {
-                    var oSub = this.getElementsByTagName('ul')[0];
-                    oSub.style.display = 'block';
-                };
-                aLi[i].onmouseout = function () {
-                    var oSub = this.getElementsByTagName('ul')[0];
-                    oSub.style.display = 'none';
-                };
-        }
+            aLi[i].onmouseover = function () {
+                var oSub = this.children[1];
+                oSub.style.display = 'block';
+            };
+            aLi[i].onmouseout = function () {
+                var oSub = this.children[1];
+                oSub.style.display = 'none';
+            };
     }
+
 
 </script>
 </body>

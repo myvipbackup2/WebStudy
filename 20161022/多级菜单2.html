@@ -59,17 +59,31 @@
 
 <script>
 
+//        var oMenu = document.getElementById('menu');
+//        var aLi=oMenu.getElementsByTagName('li');
+//        for(var i=0;i<aLi.length;i++){
+//            if (aLi[i].className == 'main'){
+//                aLi[i].onclick=function () {
+//                    var oSub=this.getElementsByTagName('ul')[0];
+//                    if(oSub.style.display=='block'){
+//                        oSub.style.display='none';
+//                    }else{
+//                        oSub.style.display='block';
+//                    }
+//                }
+//            }
+//        }
+
+
         var oMenu = document.getElementById('menu');
-        var aLi=oMenu.getElementsByTagName('li');
+        var aLi=oMenu.children;
         for(var i=0;i<aLi.length;i++){
-            if (aLi[i].className == 'main'){
-                aLi[i].onclick=function () {
-                    var oSub=this.getElementsByTagName('ul')[0];
-                    if(oSub.style.display=='block'){
-                        oSub.style.display='none';
-                    }else{
-                        oSub.style.display='block';
-                    }
+            aLi[i].onclick=function () {
+                var oSub=this.children[1];
+                if(oSub.style.display=='block'){
+                    oSub.style.display='none';
+                }else{
+                    oSub.style.display='block';
                 }
             }
         }
