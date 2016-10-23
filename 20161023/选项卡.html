@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul, ol {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        #container {
+            width: 400px;
+            height: 400px;
+            margin: 150px auto;
+        }
+
+        #tab {
+            overflow: hidden;
+        / / 解决塌陷问题
+        }
+
+        #tab li {
+            float: left;
+            width: 100px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            background-color: #bbb;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        #tab li.selected {
+            background-color: #000;
+            color: #fff;
+        }
+
+        #tab li:hover {
+            background-color: #666;
+            color: #ffffff;
+        }
+
+        #content {
+            width: 380px;
+            height: 250px;
+            border-top: 1px solid #000000;
+            background-color: gray;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <ul id="tab">
+        <li class="selected">tab1</li>
+        <li>tab2</li>
+        <li>tab3</li>
+    </ul>
+    <div id="content">111111</div>
+</div>
+<script>
+    var data = ['111111', '222222', '333333'];
+    var oTab = document.getElementById('tab');
+    var oContent = document.getElementById('content');
+    var aLi = oTab.children;
+    for (var i = 0; i < aLi.length; i++) {
+        aLi[i].index = i;
+        aLi[i].onclick = function () {
+            for (var i = 0; i < aLi.length; i++) {
+                aLi[i].className = '';
+            }
+            this.className = 'selected';
+            oContent.innerHTML = data[this.index];
+        }
+    }
+</script>
+</body>
+</html>
