@@ -92,18 +92,39 @@
     //        }
     //    }
 
+
+    //    var oMenu = document.getElementById('menu');
+    //    var aH3 = oMenu.getElementsByTagName('h3');
+    //    var aUl = oMenu.getElementsByTagName('ul');
+    //    for (var i = 0; i < aH3.length; i++) {
+    //        aH3[i].index = i;
+    //        aH3[i].onclick = function () {
+    //            if (aUl[this.index].style.display == 'block') {
+    //                aUl[this.index].style.display = 'none';
+    //            } else {
+    //                aUl[this.index].style.display = 'block';
+    //            }
+    //        }
+    //    }
+
+
     var oMenu = document.getElementById('menu');
     var aH3 = oMenu.getElementsByTagName('h3');
-    var aUl = oMenu.getElementsByTagName('ul');
-    for(var i=0;i<aH3.length;i++){
-        aH3[i].index = i;
+    for (var i = 0; i < aH3.length; i++) {
         aH3[i].onclick = function () {
-            if (aUl[this.index].style.display == 'block'){
-                aUl[this.index].style.display = 'none';
-            }else{
-                aUl[this.index].style.display = 'block';
+            if (next(this).style.display == 'block') {
+                next(this).style.display = 'none';
+            } else {
+                next(this).style.display = 'block';
             }
         }
+    }
+
+    function next(elem) {
+        do {
+            elem = elem.nextSibling;
+        } while (elem && elem.nodeType != 1);
+        return elem;
     }
 
 
