@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡3-左右滑动</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul, ol {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        #container {
+            width: 400px;
+            height: 300px;
+            margin: 150px auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #tab {
+            overflow: hidden;
+        / / 解决塌陷问题
+        }
+
+        #tab li {
+            float: left;
+            width: 100px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            background-color: #bbb;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        #tab li.selected {
+            background-color: #000;
+            color: #fff;
+        }
+
+        #tab li:hover {
+            background-color: #666;
+            color: #ffffff;
+        }
+
+        #content {
+            /*width: 1200px; //使用js控制宽度，此处为了测试方便*/
+            position: absolute;
+            height: 270px;
+            border-top: 1px solid #000000;
+            background-color: gray;
+            top: 30px;
+            left: 0;
+        }
+
+        #content div {
+            padding: 10px;
+            width: 380px;
+            height: 250px;
+            float: left;
+        }
+
+    </style>
+</head>
+<body>
+<div id="container">
+    <ul id="tab">
+        <li class="selected">tab1</li>
+        <li>tab2</li>
+        <li>tab3</li>
+    </ul>
+    <div id="content">
+        <div>div1</div>
+        <div>div2</div>
+        <div>div3</div>
+    </div>
+</div>
+<script src="myjslib.js"></script>
+<script>
+    var oTab = document.getElementById('tab');
+    var aLi = oTab.children;
+    var oContent = document.getElementById('content');
+    var aDiv = oContent.children;
+    oContent.style.width = aDiv[0].offsetWidth * aDiv.length + 'px';
+    for (var i = 0; i < aLi.length; i++) {
+        aLi[i].index = i;
+        aLi[i].onclick = function () {
+            for (var i = 0; i < aLi.length; i++) {
+                aLi[i].className = '';
+            }
+            this.className = 'selected';
+            animate(oContent,{left:-this.index * aDiv[0].offsetWidth});
+        };
+        aLi[i].onselectstart = function () {
+            return false;
+        }
+    }
+</script>
+</body>
+</html>
