@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>轮番图2-透明度变换</title>
+    <title>轮番图3-滑动切换</title>
     <style>
         * {
             margin: 0;
@@ -22,18 +22,19 @@
             height: 460px;
             margin: 150px auto;
             position: relative;
+            overflow: hidden;
         }
 
         #banner {
             position: relative;
+            /*width: 6130px;*/
+        / / js动态生成
         }
 
         #banner img {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 1226px;
             height: 460px;
+            float: left;
         }
 
         #btn {
@@ -42,7 +43,6 @@
             top: 50%;
             margin-top: -35px;
             width: 100%;
-            z-index: 99999;
         }
 
         #btn a {
@@ -73,7 +73,6 @@
             position: absolute;
             bottom: 20px;
             right: 40px;
-            z-index: 99999;
         }
 
         #tab li {
@@ -130,8 +129,9 @@
     var oPrev = document.getElementById('prev');
     var oNext = document.getElementById('next');
     var index = 0; //代表当前正在显示的图片的索引
-    var zIndex = aLi.length - 1;  //代表要显示的图片的z-index=4
     var timer = null;
+
+    oBanner.style.width = aImg[0].offsetWidth * aImg.length + 'px';  //初始化宽度
 
     for (var i = 0; i < aLi.length; i++) {
         aLi[i].index = i;
@@ -142,20 +142,14 @@
         aLi[i].onselectstart = function () {
             return false;
         };
-        aImg[i].style.zIndex = aImg.length - i - 1;
     }
 
     function changeImg(index) {
         for (var i = 0; i < aLi.length; i++) {
             aLi[i].className = '';
-            aImg[i].className = '';
         }
         aLi[index].className = 'selected';
-        var oImg = aImg[index];
-        oImg.style.opacity = 0;
-        oImg.style.filter = 'alpha(opacity=0)';
-        oImg.style.zIndex = ++zIndex;
-        animate(oImg, {opacity:100});
+        animate(oBanner, {left: -index * aImg[0].offsetWidth});
     }
 
     oPrev.onclick = function () {
