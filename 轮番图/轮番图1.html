@@ -134,6 +134,7 @@
     var oPrev = document.getElementById('prev');
     var oNext = document.getElementById('next');
     var index = 0;
+    var timer = null;
 
     for (var i = 0; i < aLi.length; i++) {
         aLi[i].index = i;
@@ -162,6 +163,7 @@
             index--;
         }
         changeImg(index);
+        auto();
     };
 
     oNext.onclick = function () {
@@ -171,6 +173,30 @@
             index++;
         }
         changeImg(index);
+        auto();
+    };
+
+    function run() { //自动轮番
+        timer = setInterval(function () {
+            oNext.onclick();
+        },2500)
+    }
+
+    function kill() { //清除定时器
+        clearInterval(timer);
+    }
+
+    function auto() { //先清除定时器再轮番
+        kill();
+        run();
+    }
+    
+    oTab.onmouseover = function () {
+        kill();
+    };
+
+    oTab.onmouseout = function () {
+        run();
     };
 </script>
 </body>
