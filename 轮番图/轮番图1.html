@@ -165,6 +165,7 @@
         }
         aLi[index].className = 'selected';
         aImg[index].className = 'selected';
+        console.log(Math.random());
     }
 
     oPrev.onclick = function () {
@@ -220,6 +221,9 @@
     oTab.onmouseout = function () {
         run();
     };
+
+//    document.oncontextmenu = new Function("event.returnValue=false;");
+//    document.onselectstart = new Function("event.returnValue=false;");
 </script>
 </body>
 </html>
