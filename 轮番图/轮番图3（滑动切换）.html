@@ -27,10 +27,11 @@
 
         #banner {
             position: relative;
-            left: 0;   //默认是auto可能取不到
+            left: 0;
             transition: .5s;
+            /*left默认是auto可能取不到*/
             /*width: 6130px;*/
-        / / 宽度js动态生成
+            /*宽度js动态生成*/
         }
 
         #banner img {
@@ -154,7 +155,6 @@
             }
             aLi[index].className = 'selected';
             oBanner.style.left = -index * aImg[0].offsetWidth + "px"; //用css3的transition实现过度
-
 //            animate(oBanner, {left: -index * aImg[0].offsetWidth});
         }
 
