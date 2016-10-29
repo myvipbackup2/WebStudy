@@ -17,6 +17,13 @@
             text-decoration: none;
         }
 
+        body {
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
         #container {
             width: 1226px;
             height: 460px;
@@ -162,10 +169,10 @@
 
     oPrev.onclick = function () {
         /*if (index == 0) {
-            index = aImg.length - 1;
-        } else {
-            index--;
-        }*/
+         index = aImg.length - 1;
+         } else {
+         index--;
+         }*/
         if (index) {
             index--;
         } else {
@@ -176,13 +183,15 @@
     };
 
     oNext.onclick = function () {
-//        if (index == aLi.length - 1) {
-//            index = 0;
-//        } else {
-//            index++;
-//        }
-        index++;
-        index = index % aLi.length;
+        //        if (index == aLi.length - 1) {
+        //            index = 0;
+        //        } else {i
+        //            index++;
+        //        }
+
+        //        index++;
+        //        index = index % aLi.length;
+        index = ++index % aLi.length; //先++再使用
         changeImg(index);
         auto();
     };
@@ -190,7 +199,7 @@
     function run() { //自动轮番
         timer = setInterval(function () {
             oNext.onclick();
-        },2500)
+        }, 2500)
     }
 
     function kill() { //清除定时器
