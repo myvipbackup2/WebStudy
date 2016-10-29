@@ -27,6 +27,8 @@
 
         #banner {
             position: relative;
+            left: 0;   //默认是auto可能取不到
+            transition: .5s;
             /*width: 6130px;*/
         / / 宽度js动态生成
         }
@@ -151,7 +153,9 @@
                 aLi[i].className = '';
             }
             aLi[index].className = 'selected';
-            animate(oBanner, {left: -index * aImg[0].offsetWidth});
+            oBanner.style.left = -index * aImg[0].offsetWidth + "px"; //用css3的transition实现过度
+
+//            animate(oBanner, {left: -index * aImg[0].offsetWidth});
         }
 
         oPrev.onclick = function () {
