@@ -161,10 +161,15 @@
     }
 
     oPrev.onclick = function () {
-        if (index == 0) {
+        /*if (index == 0) {
             index = aImg.length - 1;
         } else {
             index--;
+        }*/
+        if (index) {
+            index--;
+        } else {
+            index = aImg.length - 1;
         }
         changeImg(index);
         auto();
