@@ -176,11 +176,13 @@
     };
 
     oNext.onclick = function () {
-        if (index == aLi.length - 1) {
-            index = 0;
-        } else {
-            index++;
-        }
+//        if (index == aLi.length - 1) {
+//            index = 0;
+//        } else {
+//            index++;
+//        }
+        index++;
+        index = index % aLi.length;
         changeImg(index);
         auto();
     };
@@ -201,7 +203,7 @@
     }
 
     auto();
-    
+
     oTab.onmouseover = function () {
         kill();
     };
