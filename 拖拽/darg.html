@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>drag</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #drag {
+            width: 200px;
+            height: 200px;
+            background: #f00;
+            cursor: pointer;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+
+<h2 style="text-align: center">测试会不会被div拖拽选中</h2>
+<div id="drag"></div>
+
+<script>
+    (function () {
+        var oDrag = document.getElementById('drag');
+        oDrag.onmousedown = function (e) {
+            e = e || window.event; //e事件对象，解决兼容性问题
+//            var target = e.target || e.srcElement;
+            var iDisX = e.clientX - this.offsetLeft;  //鼠标点击的x轴-div的offset值
+            var iDisY = e.clientY - this.offsetTop;
+            document.onmousemove = function (e) {  //给document绑定事件就不怕鼠标移的太快移除div
+                e = e || window.event;
+                var iLeft = e.clientX - iDisX;
+                var iTop = e.clientY - iDisY;
+                oDrag.style.left = iLeft + 'px';
+                oDrag.style.top = iTop + 'px';
+                return false;  //阻止默认行为，防止拖拽选中其他文字
+            };
+        };
+        document.onmouseup = function () {
+            document.onmousemove = null;
+        };
+    })();
+</script>
+</body>
+</html>
