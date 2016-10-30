@@ -118,12 +118,12 @@
                 e = e || window.event;
                 var iTop = e.clientY - iDisY;
                 var top = 0;
-                var barMax = oScrollBar.offsetHeight - oBar.offsetHeight;
-                var fScale = iTop / barMax;  //比例
+                var barMaxH = oScrollBar.offsetHeight - oBar.offsetHeight;
+                var fScale = iTop / barMaxH;  //比例
                 if (iTop < 0) {
                     top = 0;
-                } else if (iTop > barMax) {
-                    top = barMax;
+                } else if (iTop > barMaxH) {
+                    top = barMaxH;
                 } else {
                     top = iTop;
                     oContent.style.top = -(oContent.offsetHeight - oContainer.offsetHeight) * fScale + 'px';
