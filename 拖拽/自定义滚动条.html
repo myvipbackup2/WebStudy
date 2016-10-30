@@ -17,12 +17,17 @@
         #content {
             position: absolute;
             background-color: ghostwhite;
-            width: 360px;
+            width: 358px;
+            border-right: 2px solid #000;
             padding: 10px;
         }
 
         #content span {
             font-size: 18px;
+        }
+
+        #content span b {
+            color: #f00;
         }
 
         #scrollBar {
@@ -39,7 +44,9 @@
             height: 70px;
             background-color: red;
             cursor: pointer;
-            position: relative;
+            position: absolute;
+            top: 0;
+            left: 0;
         }
     </style>
 </head>
@@ -90,7 +97,7 @@
                 测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试
                 测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试
                 测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试
-                测试测试测试测试测试测试测试测试测试测试测end
+                测试测试测试测试测试测试测试测试测试测试测<b>结束结束！！</b>
             </span>
     </div>
     <div id="scrollBar">
@@ -110,15 +117,18 @@
             document.onmousemove = function (e) {
                 e = e || window.event;
                 var iTop = e.clientY - iDisY;
-                var fScale = iTop / (oScrollBar.offsetHeight - oBar.offsetHeight);
+                var top = 0;
+                var barMax = oScrollBar.offsetHeight - oBar.offsetHeight;
+                var fScale = iTop / barMax;  //比例
                 if (iTop < 0) {
-                    oBar.style.top = 0 + 'px';
-                } else if (iTop > oScrollBar.offsetHeight - oBar.offsetHeight) {
-                    oBar.style.top = oScrollBar.offsetHeight - oBar.offsetHeight + 'px';
+                    top = 0;
+                } else if (iTop > barMax) {
+                    top = barMax;
                 } else {
-                    oBar.style.top = iTop + 'px';
+                    top = iTop;
                     oContent.style.top = -(oContent.offsetHeight - oContainer.offsetHeight) * fScale + 'px';
                 }
+                oBar.style.top = top + 'px';
                 return false;
             }
         };
