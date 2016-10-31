@@ -67,6 +67,12 @@
             top: 0;
             display: none;
         }
+
+        #bigImg{
+            position: relative;
+            left: 0;
+            top: 0;
+        }
     </style>
 </head>
 <body>
@@ -77,7 +83,7 @@
         <div id="glass"></div>
     </div>
     <div id="big">
-        <img src="img/1.jpg" alt="大图" title="大图">
+        <img id="bigImg" src="img/1.jpg" alt="大图" title="大图">
     </div>
 </div>
 
@@ -87,6 +93,7 @@
             var oMask = document.getElementById('mask');
             var oGlass = document.getElementById('glass');
             var oBig = document.getElementById('big');
+            var oBigImg = document.getElementById('bigImg');
             var oContainer = document.getElementById('container');
             oMask.onmouseover = function () {
                 oGlass.style.display = 'block';
@@ -100,26 +107,29 @@
                 var top = iDisY - oGlass.offsetHeight / 2;
                 var maxTop = oMask.offsetHeight - oGlass.offsetHeight;
                 var maxLeft = oMask.offsetWidth - oGlass.offsetWidth;
-                if (left <= 0) {
+                if (left < 0) {
                     left = 0;
                 }
-                if (top <= 0) {
+                if (top < 0) {
                     top = 0;
                 }
-                if (left >= maxLeft) {
+                if (left > maxLeft) {
                     left = maxLeft;
                 }
-                if (top >= maxTop) {
+                if (top > maxTop) {
                     top = maxTop;
                 }
+                var fScaleX = left / maxLeft;
+                var fScaleY = top / maxTop;
                 oGlass.style.left = left + 'px';
                 oGlass.style.top = top + 'px';
+                oBigImg.style.left = -fScaleX * (oBigImg.offsetWidth - oBig.offsetWidth) + 'px';
+                oBigImg.style.top = -fScaleY * (oBigImg.offsetHeight - oBig.offsetHeight) + 'px';
             };
             oMask.onmouseout = function () {
                 oGlass.style.display = 'none';
                 oBig.style.display = 'none';
             }
-
 
         })();
     }
