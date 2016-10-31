@@ -120,7 +120,7 @@
                 if (top > maxTop) {
                     top = maxTop;
                 }
-                var fScaleX = left / maxLeft;
+                var fScaleX = left / maxLeft;  //因为left值可能被重置所以定义fScale变量应该在下面
                 var fScaleY = top / maxTop;
                 oGlass.style.left = left + 'px';
                 oGlass.style.top = top + 'px';
