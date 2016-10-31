@@ -8,24 +8,81 @@
             margin: 0;
             padding: 0;
         }
-        #container{
+
+        #container {
             margin: 50px auto;
+            width: 810px;
+            position: relative;
         }
-        #content{
+
+        #content {
+            width: 400px;
+            height: 400px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        #content img {
             width: 400px;
             height: 400px;
         }
-        #content img{
+
+        #glass {
+            width: 200px;
+            height: 200px;
+            background-color: rgb(192, 210, 240);
+            background-color: rgba(192, 210, 240, 0.6);
+            position: absolute;
+            top: 0;
+            left: 0;
+            cursor: move;
+            display: none;
+        }
+
+        #big {
             width: 400px;
             height: 400px;
+            border: 1px solid #000000;
+            overflow: hidden;
+            position: absolute;
+            right: 0;
+            top: 0;
         }
     </style>
 </head>
 <body>
 <div id="container">
     <div id="content">
-        <img src="img/1.jpg" alt="">
+        <img src="img/1.jpg" alt="小图" title="小图">
+        <div id="glass"></div>
+    </div>
+    <div id="big">
+        <img src="img/1.jpg" alt="大图" title="大图">
     </div>
 </div>
+
+<script>
+    window.onload = function () {
+        (function () {
+            var oContent = document.getElementById('content');
+            var oGlass = document.getElementById('glass');
+            var oBig = document.getElementById('big');
+            oContent.onmouseover = function () {
+                oGlass.style.display = 'block';
+
+                oGlass.onmousemove = function () {
+
+                };
+            };
+
+            oContent.onmouseout = function () {
+                oGlass.style.display = 'none';
+            }
+
+
+        })();
+    }
+</script>
 </body>
 </html>
