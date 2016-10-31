@@ -31,10 +31,9 @@
         #glass {
             width: 200px;
             height: 200px;
-            background-color: rgb(192, 210, 240);
-            -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
-            filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
-            background-color: rgba(192, 210, 240, 0.6);
+            background-color: #000;
+            opacity: 0.3;
+            filter: alpha(opacity=30);
             position: absolute;
             top: 0;
             left: 0;
@@ -46,10 +45,12 @@
         #mask {
             width: 100%;
             height: 100%;
+            background-color: #fff;
             /*background-color: transparent;*/
             opacity: 0;
-            -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
-            filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+            /*-ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);*/
+            /*filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);*/
+            filter: Alpha(Opacity=0);
             position: absolute;
             top: 0;
             left: 0;
@@ -68,7 +69,7 @@
             display: none;
         }
 
-        #bigImg{
+        #bigImg {
             position: relative;
             left: 0;
             top: 0;
