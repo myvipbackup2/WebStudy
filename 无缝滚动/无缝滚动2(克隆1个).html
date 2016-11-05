@@ -28,18 +28,18 @@
 
         #content {
             position: relative;
-            /*width: 1000%;*/
             height: 200px;
-            -webkit-transition: 0.5s;
-            -moz-transition: 0.5s;
-            -ms-transition: 0.5s;
-            -o-transition: 0.5s;
-            transition: 0.5s;
-            /*left: -20px;*/
+            left: -20px;
+            /*-webkit-transition: 0.2s time;*/
+            /*-moz-transition: 0.2s time;*/
+            /*-ms-transition: 0.2s time;*/
+            /*-o-transition: 0.2s time;*/
+            /*transition: 0.2s time;*/
         }
 
         #contentUl {
             overflow: hidden;
+            float: left;
         }
 
         #contentUl li {
@@ -91,6 +91,7 @@
         <a id="right" href="javascript:;">向右&gt;&gt;</a>
     </div>
 </div>
+<script src="myjslib.js"></script>
 <script>
     window.onload = function () {
         (function () {
@@ -101,29 +102,34 @@
             var oLeft = document.getElementById('left');
             var oRight = document.getElementById('right');
             var timer = null;
+            var speed = 35;
+            oUl.innerHTML += oUl.innerHTML;
             var maxWidth = (aLi[0].offsetWidth + 10) * aLi.length;
-            var i = 1;
             oContent.style.width = maxWidth + 'px';
-            timer = setInterval(function () {
-                oContent.style.left = oContent.offsetLeft - 20 + 'px';
-                if (-oContent.offsetLeft > (maxWidth - oContainer.offsetWidth - 40)) {
-                    if (i > 4) {
-                        i = 1;
+            function run(directon) {
+                timer = setInterval(function () {
+                    if (directon == -1) {
+                        if (-oContent.offsetLeft > (maxWidth - oContainer.offsetWidth)) {
+                            oContent.style.left = -aLi[0].offsetWidth + 'px';
+                        }
+                    } else if (directon == 1) {
+                        if (oContent.offsetLeft > 10) {
+                            oContent.style.left = -maxWidth / 2 + 10 + 'px';
+                        }
                     }
-                    maxWidth = (aLi[0].offsetWidth + 10) * (aLi.length + 1);
-                    oUl.style.width = maxWidth + 'px';
-                    oContent.style.width = maxWidth + 'px';
-                    var oLi = document.createElement('li');
-                    oLi.innerHTML = i;
-                    oUl.appendChild(oLi);
-                    i++;
-                }
-            }, 200);
+//                    oContent.style.left = oContent.offsetLeft + directon * speed + 'px';
+                    animate(oContent, {left: oContent.offsetLeft + directon * speed});
+                }, 80);
+            }
+
+            run(-1);
             oRight.onclick = function () {
                 clearInterval(timer);
+                run(1);
             };
             oLeft.onclick = function () {
                 clearInterval(timer);
+                run(-1);
             };
         })();
     }
