@@ -29,12 +29,11 @@
         #content {
             position: relative;
             height: 200px;
-            left: -20px;
-            /*-webkit-transition: 0.2s time;*/
-            /*-moz-transition: 0.2s time;*/
-            /*-ms-transition: 0.2s time;*/
-            /*-o-transition: 0.2s time;*/
-            /*transition: 0.2s time;*/
+            /*-webkit-transition: 0.5s;*/
+            /*-moz-transition: 0.5s;*/
+            /*-ms-transition: 0.5s;*/
+            /*-o-transition: 0.5s;*/
+            /*transition: 0.5s;*/
         }
 
         #contentUl {
@@ -111,6 +110,7 @@
                     if (directon == -1) {
                         if (-oContent.offsetLeft > (maxWidth - oContainer.offsetWidth)) {
                             oContent.style.left = -aLi[0].offsetWidth + 'px';
+
                         }
                     } else if (directon == 1) {
                         if (oContent.offsetLeft > 10) {
@@ -119,7 +119,7 @@
                     }
 //                    oContent.style.left = oContent.offsetLeft + directon * speed + 'px';
                     animate(oContent, {left: oContent.offsetLeft + directon * speed});
-                }, 80);
+                }, 200);
             }
 
             run(-1);
