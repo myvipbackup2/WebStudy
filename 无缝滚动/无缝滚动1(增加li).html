@@ -106,16 +106,25 @@
             oContent.style.width = maxWidth + 'px';
             timer = setInterval(function () {
                 oContent.style.left = oContent.offsetLeft - 20 + 'px';
-                if (-oContent.offsetLeft > (maxWidth - oContainer.offsetWidth -110)) {
-                    if (i>4){
-                        i =1;
+                if (-oContent.offsetLeft > (maxWidth - oContainer.offsetWidth - 40)) {
+                    if (i > 4) {
+                        i = 1;
                     }
-                    oUl.innerHTML += '<li>' + i + '</li>';
-                    i++;
-                    maxWidth = (aLi[0].offsetWidth + 10) * aLi.length;
+                    maxWidth = (aLi[0].offsetWidth + 10) * (aLi.length + 1);
+                    oUl.style.width = maxWidth + 'px';
                     oContent.style.width = maxWidth + 'px';
+                    var oLi = document.createElement('li');
+                    oLi.innerHTML = i;
+                    oUl.appendChild(oLi);
+                    i++;
                 }
             }, 200);
+            oRight.onclick = function () {
+                clearInterval(timer);
+            };
+            oLeft.onclick = function () {
+                clearInterval(timer);
+            };
         })();
     }
 </script>
