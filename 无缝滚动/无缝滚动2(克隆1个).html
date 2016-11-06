@@ -101,25 +101,25 @@
             var oLeft = document.getElementById('left');
             var oRight = document.getElementById('right');
             var timer = null;
-            var speed = 35;
+            var speed = 10;
             oUl.innerHTML += oUl.innerHTML;
             var maxWidth = (aLi[0].offsetWidth + 10) * aLi.length;
             oContent.style.width = maxWidth + 'px';
-            function run(directon) {
+            function run(direction) {
                 timer = setInterval(function () {
-                    if (directon == -1) {
+                    if (direction == -1) {
                         if (-oContent.offsetLeft > (maxWidth - oContainer.offsetWidth)) {
                             oContent.style.left = -aLi[0].offsetWidth + 'px';
 
                         }
-                    } else if (directon == 1) {
+                    } else if (direction == 1) {
                         if (oContent.offsetLeft > 10) {
                             oContent.style.left = -maxWidth / 2 + 10 + 'px';
                         }
                     }
-//                    oContent.style.left = oContent.offsetLeft + directon * speed + 'px';
-                    animate(oContent, {left: oContent.offsetLeft + directon * speed});
-                }, 200);
+//                    oContent.style.left = oContent.offsetLeft + direction * speed + 'px';
+                    animate(oContent, {left: oContent.offsetLeft + direction * speed});
+                }, 100);
             }
 
             run(-1);
