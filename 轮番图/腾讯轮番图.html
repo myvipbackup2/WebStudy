@@ -16,7 +16,6 @@
         #container {
             position: relative;
             margin: 100px auto;
-            background-color: red;
             width: 1000px;
             height: 550px;
         }
@@ -40,7 +39,7 @@
 
         #small-img {
             position: relative;
-            width: 150%;
+            height: 100%;
         }
 
         #small-img li {
@@ -159,10 +158,14 @@
             var oSmall = document.getElementById('small-img');
             var aSmallLi = oSmall.getElementsByTagName('li');
             var aSmallImg = oSmall.getElementsByTagName('img');
+            var oPrev = document.getElementById('prev');
+            var oNext = document.getElementById('next');
             var zIndex = aBigLi.length;
             var index = 0;
             var bFlag = true; //定义左右切换状态
             var sliderWidth = (aSmallImg[1].offsetWidth + 10) * 7 - 14;
+            var sliderMaxWidth = aSmallLi[1].offsetWidth * aSmallLi.length + 4;
+            oSmall.style.width = sliderMaxWidth + 'px';
             oSliderImg.style.width = sliderWidth + 'px';
             for (var i = 0; i < aBigLi.length; i++) {
                 aBigLi[i].style.zIndex = zIndex - i;
@@ -185,6 +188,21 @@
                 animate(aBigLi[index], {opacity: 100});
             }
 
+            oPrev.onclick = function () {
+                slide();
+            };
+            oNext.onclick = function () {
+                slide();
+            };
+
+            function slide() {
+                if (bFlag) {
+                    animate(oSmall, {left: -sliderMaxWidth / 2 + 2});
+                } else {
+                    animate(oSmall, {left: 0});
+                }
+                bFlag = !bFlag;
+            }
 
         })();
     }
