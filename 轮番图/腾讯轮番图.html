@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>腾讯图片轮番图</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul, ol {
+            list-style: none;
+        }
+
+        #container {
+            position: relative;
+            margin: 100px auto;
+            background-color: red;
+            width: 1000px;
+            height: 550px;
+        }
+
+        #big-img img {
+            width: 1000px;
+            height: 550px;
+        }
+
+        #big-img li {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        #small-img {
+            position: relative;
+            width: 150%;
+        }
+
+        #small-img li {
+            float: left;
+        }
+
+        #small-img img {
+            width: 75px;
+            height: 50px;
+            margin-right: 8px;
+            border: 0;
+        }
+
+        #slider-img{
+            width: 573px;
+            height: 50px;
+            overflow: hidden;
+            z-index: 9999999999;
+            position: absolute;
+            bottom: 17px;
+            left: 50%;
+            margin-left: -286px;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="content">
+        <ul id="big-img">
+            <li><a href="#"><img src="img2/01.jpg" alt=""></a></li>
+            <li><a href="#"><img src="img2/02.jpg" alt=""></a></li>
+            <li><a href="#"><img src="img2/03.jpg" alt=""></a></li>
+            <li><a href="#"><img src="img2/04.jpg" alt=""></a></li>
+            <li><a href="#"><img src="img2/05.jpg" alt=""></a></li>
+            <li><a href="#"><img src="img2/06.jpg" alt=""></a></li>
+            <li><a href="#"><img src="img2/07.jpg" alt=""></a></li>
+            <li><a href="#"><img src="img2/08.jpg" alt=""></a></li>
+            <li><a href="#"><img src="img2/09.jpg" alt=""></a></li>
+            <li><a href="#"><img src="img2/10.jpg" alt=""></a></li>
+            <li><a href="#"><img src="img2/11.jpg" alt=""></a></li>
+            <li><a href="#"><img src="img2/12.jpg" alt=""></a></li>
+            <li><a href="#"><img src="img2/13.jpg" alt=""></a></li>
+            <li><a href="#"><img src="img2/14.jpg" alt=""></a></li>
+        </ul>
+        <div id="slider">
+            <div id="btn">
+                <a id="prev" href="javascript:;"></a>
+                <a id="next" href="javascript:;"></a>
+            </div>
+            <div id="slider-img">
+                <ul id="small-img">
+                    <li><a href="#"><img src="img2/01.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="img2/02.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="img2/03.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="img2/04.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="img2/05.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="img2/06.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="img2/07.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="img2/08.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="img2/09.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="img2/10.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="img2/11.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="img2/12.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="img2/13.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="img2/14.jpg" alt=""></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
