@@ -26,6 +26,12 @@
             height: 550px;
         }
 
+        #big-img a {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
         #big-img li {
             position: absolute;
             top: 0;
@@ -41,6 +47,10 @@
             float: left;
         }
 
+        #small-img img.selected {
+            border: 2px solid #FFFFFF;
+        }
+
         #small-img img {
             width: 75px;
             height: 50px;
@@ -48,15 +58,48 @@
             border: 0;
         }
 
-        #slider-img{
-            width: 573px;
-            height: 50px;
+        #slider-img {
+            /*width: 573px;*/
+            height: 53px;
             overflow: hidden;
             z-index: 9999999999;
             position: absolute;
             bottom: 17px;
             left: 50%;
             margin-left: -286px;
+        }
+
+        #btn {
+            overflow: hidden;
+            position: absolute;
+            bottom: 12px;
+            width: 664px;
+            margin-left: 170px;
+            z-index: 999999999;
+        }
+
+        #btn a {
+            width: 41px;
+            height: 69px;
+        }
+
+        #prev {
+            float: left;
+            background: url("img/btn.png") no-repeat -84px;
+        }
+
+        #prev:hover {
+            background: url("img/btn.png") no-repeat 0;
+        }
+
+        #next {
+            float: right;
+            background: url("img/btn.png") no-repeat -125px;
+        }
+
+        #next:hover {
+            float: right;
+            background: url("img/btn.png") no-repeat -41px;
         }
     </style>
 </head>
@@ -86,7 +129,7 @@
             </div>
             <div id="slider-img">
                 <ul id="small-img">
-                    <li><a href="#"><img src="img2/01.jpg" alt=""></a></li>
+                    <li><a href="#"><img class="selected" src="img2/01.jpg" alt=""></a></li>
                     <li><a href="#"><img src="img2/02.jpg" alt=""></a></li>
                     <li><a href="#"><img src="img2/03.jpg" alt=""></a></li>
                     <li><a href="#"><img src="img2/04.jpg" alt=""></a></li>
@@ -105,5 +148,46 @@
         </div>
     </div>
 </div>
+<script src="myjslib.js"></script>
+<script>
+    window.onload = function () {
+        (function () {
+            var oContainer = document.getElementById('container');
+            var oSliderImg = document.getElementById('slider-img');
+            var oBig = document.getElementById('big-img');
+            var aBigLi = oBig.getElementsByTagName('li');
+            var oSmall = document.getElementById('small-img');
+            var aSmallLi = oSmall.getElementsByTagName('li');
+            var aSmallImg = oSmall.getElementsByTagName('img');
+            var zIndex = aBigLi.length;
+            var index = 0;
+            var bFlag = true; //定义左右切换状态
+            var sliderWidth = (aSmallImg[1].offsetWidth + 10) * 7 - 14;
+            oSliderImg.style.width = sliderWidth + 'px';
+            for (var i = 0; i < aBigLi.length; i++) {
+                aBigLi[i].style.zIndex = zIndex - i;
+                aBigLi[i].index = i;
+                aSmallLi[i].index = i;
+                aSmallImg[i].index = i;
+                aSmallImg[i].onmouseover = function () {
+                    index = this.index;
+                    changeImg(index);
+                }
+            }
+            function changeImg(index) {
+                for (var i = 0; i < aSmallLi.length; i++) {
+                    aSmallImg[i].className = '';
+                    aSmallImg[index].className = 'selected';
+                }
+                aBigLi[index].style.opacity = 0;
+                aBigLi[index].style.filter = 'alpha(opacity=0)';
+                aBigLi[index].style.zIndex = ++zIndex;
+                animate(aBigLi[index], {opacity: 100});
+            }
+
+
+        })();
+    }
+</script>
 </body>
 </html>
