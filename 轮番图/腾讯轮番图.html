@@ -163,8 +163,10 @@
             var zIndex = aBigLi.length;
             var index = 0;
             var bFlag = true; //定义左右切换状态
-            var sliderWidth = (aSmallImg[1].offsetWidth + 10) * 7 - 14;
-            var sliderMaxWidth = aSmallLi[1].offsetWidth * aSmallLi.length + 4;
+            var sliderWidth = (aSmallImg[1].offsetWidth + 10) * 7 - 14;  //(10margin+4border)
+            var sliderMaxWidth = aSmallLi[1].offsetWidth * aSmallLi.length + 4;  //4border
+            var timer = null;
+
             oSmall.style.width = sliderMaxWidth + 'px';
             oSliderImg.style.width = sliderWidth + 'px';
             for (var i = 0; i < aBigLi.length; i++) {
@@ -195,14 +197,36 @@
                 slide();
             };
 
-            function slide() {
+            function slide() {  //滑动slider
                 if (bFlag) {
+                    index = aBigLi.length / 2;
                     animate(oSmall, {left: -sliderMaxWidth / 2 + 2});
+                    changeImg(index)
                 } else {
+                    index = 0;
                     animate(oSmall, {left: 0});
+                    changeImg(index);
                 }
                 bFlag = !bFlag;
             }
+
+            function run() {
+                timer = setInterval(function () {
+                    changeImg(++index % aBigLi.length);
+                    if (index == aBigLi.length / 2 || index == aBigLi.length) {  //当索引到7或14的时候滑动slider
+                        slide();
+                    }
+                }, 2000)
+            }
+
+            run();
+
+            oContainer.onmousemove = function () {
+                clearInterval(timer);
+            };
+            oContainer.onmouseout = function () {
+                run();
+            };
 
         })();
     }
