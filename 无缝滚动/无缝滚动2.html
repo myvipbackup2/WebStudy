@@ -22,18 +22,13 @@
             height: 298px;
             border: 1px solid #000;
             margin: 100px auto;
-            overflow: hidden;
+            /*overflow: hidden;*/
             position: relative;
         }
 
         #content {
             position: relative;
             height: 200px;
-            /*-webkit-transition: 0.5s;*/
-            /*-moz-transition: 0.5s;*/
-            /*-ms-transition: 0.5s;*/
-            /*-o-transition: 0.5s;*/
-            /*transition: 0.5s;*/
         }
 
         #contentUl {
@@ -100,35 +95,29 @@
             var aLi = oUl.children;
             var oLeft = document.getElementById('left');
             var oRight = document.getElementById('right');
-            var timer = null;
-            var speed = 10;
+            var speed = -5;
             oUl.innerHTML += oUl.innerHTML;
             var maxWidth = (aLi[0].offsetWidth + 10) * aLi.length;
             oContent.style.width = maxWidth + 'px';
-            function run(direction) {
-                timer = setInterval(function () {
-                    if (direction == -1) {
-                        if (-oContent.offsetLeft > (maxWidth - oContainer.offsetWidth)) {
-                            oContent.style.left = -aLi[0].offsetWidth + 'px';
-                        }
-                    } else if (direction == 1) {
-                        if (oContent.offsetLeft > 10) {
-                            oContent.style.left = -maxWidth / 2 + 10 + 'px';
-                        }
-                    }
-//                    oContent.style.left = oContent.offsetLeft + direction * speed + 'px';
-                    animate(oContent, {left: oContent.offsetLeft + direction * speed});
-                }, 100);
-            }
 
-            run(-1);
-            oRight.onclick = function () {
-                clearInterval(timer);
-                run(1);
+            setInterval(function () {
+                if (-oContent.offsetLeft > (maxWidth - oContainer.offsetWidth)) {
+                    oContent.style.left = -aLi[0].offsetWidth + 'px';
+                }
+                if (oContent.offsetLeft > 10) {
+                    oContent.style.left = -maxWidth / 2 + 10 + 'px';
+                }
+
+                oContent.style.left = oContent.offsetLeft + speed + 'px';
+//                    animate(oContent, {left: oContent.offsetLeft + direction * speed});
+            }, 30);
+
+
+            oRight.onmouseover = function () {
+                speed = 5;
             };
-            oLeft.onclick = function () {
-                clearInterval(timer);
-                run(-1);
+            oLeft.onmouseover = function () {
+                speed = -5;
             };
         })();
     }
