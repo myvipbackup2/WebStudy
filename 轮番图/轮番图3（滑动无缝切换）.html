@@ -160,7 +160,7 @@
         oPrev.onclick = function () {
             index--;
             if (index == -1) {
-                oBanner.style.left = -aImg.length * aImg[0].offsetWidth + 'px';
+                oBanner.style.left = -(aImg.length-1) * aImg[0].offsetWidth + 'px';  //索引是长度-1
                 index = aLi.length - 1;
             }
             changeImg(index);
