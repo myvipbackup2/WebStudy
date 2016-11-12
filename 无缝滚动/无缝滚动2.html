@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>无缝滚动</title>
+    <title>无缝滚动2代码优化</title>
     <style>
         * {
             margin: 0;
@@ -22,7 +22,7 @@
             height: 298px;
             border: 1px solid #000;
             margin: 100px auto;
-            /*overflow: hidden;*/
+            overflow: hidden;
             position: relative;
         }
 
@@ -95,29 +95,25 @@
             var aLi = oUl.children;
             var oLeft = document.getElementById('left');
             var oRight = document.getElementById('right');
-            var speed = -5;
+            var speed = -3;
             oUl.innerHTML += oUl.innerHTML;
             var maxWidth = (aLi[0].offsetWidth + 10) * aLi.length;
             oContent.style.width = maxWidth + 'px';
 
             setInterval(function () {
-                if (-oContent.offsetLeft > (maxWidth - oContainer.offsetWidth)) {
-                    oContent.style.left = -aLi[0].offsetWidth + 'px';
+                if (oContent.offsetLeft <= -oContent.offsetWidth / 2) {
+                    oContent.style.left = 0 + 'px';
+                } else if (oContent.offsetLeft >= 0) {
+                    oContent.style.left = -maxWidth / 2 + 'px';
                 }
-                if (oContent.offsetLeft > 10) {
-                    oContent.style.left = -maxWidth / 2 + 10 + 'px';
-                }
-
                 oContent.style.left = oContent.offsetLeft + speed + 'px';
-//                    animate(oContent, {left: oContent.offsetLeft + direction * speed});
             }, 30);
 
-
             oRight.onmouseover = function () {
-                speed = 5;
+                speed = 3;
             };
             oLeft.onmouseover = function () {
-                speed = -5;
+                speed = -3;
             };
         })();
     }
