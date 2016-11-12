@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>轮番图3-滑动切换</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul, ol {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        #container {
+            width: 1226px;
+            height: 460px;
+            margin: 150px auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #banner {
+            position: relative;
+            left: 0;
+            /*宽度js动态生成*/
+        }
+
+        #banner img {
+            width: 1226px;
+            height: 460px;
+            float: left;
+        }
+
+        #btn {
+            overflow: hidden;
+            position: absolute;
+            top: 50%;
+            margin-top: -35px;
+            width: 100%;
+        }
+
+        #btn a {
+            width: 41px;
+            height: 69px;
+        }
+
+        #prev {
+            float: left;
+            background: url("img/btn.png") no-repeat -84px;
+        }
+
+        #prev:hover {
+            background: url("img/btn.png") no-repeat 0;
+        }
+
+        #next {
+            float: right;
+            background: url("img/btn.png") no-repeat -125px;
+        }
+
+        #next:hover {
+            float: right;
+            background: url("img/btn.png") no-repeat -41px;
+        }
+
+        #tab {
+            position: absolute;
+            bottom: 20px;
+            right: 40px;
+        }
+
+        #tab li {
+            float: left;
+            width: 20px;
+            height: 20px;
+            background-color: #000;
+            color: #fff;
+            margin-left: 5px;
+            text-align: center;
+            line-height: 20px;
+            cursor: pointer;
+            border-radius: 2px;
+        }
+
+        #tab li.selected {
+            background-color: orangered;
+        }
+
+        #tab li:hover {
+            background-color: orangered;
+            transition: background 0.3s;
+        }
+
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="banner">
+        <img src="img/1.jpg" alt="">
+        <img src="img/2.jpg" alt="">
+        <img src="img/3.jpg" alt="">
+        <img src="img/4.jpg" alt="">
+        <img src="img/5.jpg" alt="">
+    </div>
+    <div id="btn">
+        <a href="javascript:;" id="prev"></a>
+        <a href="javascript:;" id="next"></a>
+        <!--<a href="###" id="prev"></a>-->
+        <!--<a href="###" id="next"></a>-->
+    </div>
+    <ul id="tab">
+        <li class="selected">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+</div>
+
+<script src="myjslib.js"></script>
+<script>
+    window.onload = function () {
+        var oTab = document.getElementById('tab');
+        var aLi = oTab.children;
+        var oBanner = document.getElementById('banner');
+        var aImg = oBanner.children;
+        var oPrev = document.getElementById('prev');
+        var oNext = document.getElementById('next');
+        var index = 0; //代表当前正在显示的图片的索引
+        var timer = null;
+        var newImg = aImg[0].cloneNode();
+        oBanner.appendChild(newImg);
+        oBanner.style.width = aImg[0].offsetWidth * aImg.length + 'px';  //初始化宽度
+        for (var i = 0; i < aLi.length; i++) {
+            aLi[i].index = i;
+            aLi[i].onmouseover = function () {
+                index = this.index;
+                changeImg(index);
+            };
+            aLi[i].onselectstart = function () {
+                return false;
+            };
+        }
+
+        function changeImg(index) {
+            for (var i = 0; i < aLi.length; i++) {
+                aLi[i].className = '';
+            }
+            aLi[index == aImg.length - 1 ? 0 : index].className = 'selected';
+//            oBanner.style.left = -index * aImg[0].offsetWidth + "px";
+            animate(oBanner, {left: -index * aImg[0].offsetWidth});
+        }
+
+        oPrev.onclick = function () {
+            index--;
+            if (index == -1) {
+                oBanner.style.left = -aImg.length * aImg[0].offsetWidth + 'px';
+                index = aLi.length - 1;
+            }
+            changeImg(index);
+            auto();
+        };
+
+        oNext.onclick = function () {
+            index++;
+            if (index == aImg.length) {
+                oBanner.style.left = 0;
+                index = 1;
+            }
+            changeImg(index);
+            auto();
+        };
+
+        function run() { //自动轮番
+            timer = setInterval(function () {
+                oNext.onclick();
+            }, 2500)
+        }
+
+        function kill() { //清除定时器
+            clearInterval(timer);
+        }
+
+        function auto() { //先清除定时器再轮番
+            kill();
+            run();
+        }
+
+        auto();
+
+        oTab.onmouseover = function () {
+            kill();
+        };
+
+        oTab.onmouseout = function () {
+            run();
+        };
+    }
+</script>
+</body>
+</html>
