@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>无缝滚动</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ol, ul {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        #container {
+            width: 498px;
+            height: 298px;
+            border: 1px solid #000;
+            margin: 100px auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #content {
+            position: relative;
+            height: 200px;
+            /*-webkit-transition: 0.5s;*/
+            /*-moz-transition: 0.5s;*/
+            /*-ms-transition: 0.5s;*/
+            /*-o-transition: 0.5s;*/
+            /*transition: 0.5s;*/
+        }
+
+        #contentUl {
+            overflow: hidden;
+            float: left;
+        }
+
+        #contentUl li {
+            float: left;
+            width: 150px;
+            height: 200px;
+            color: #ffffff;
+            font-size: 50px;
+            text-align: center;
+            line-height: 200px;
+            background-color: #000;
+            margin-right: 10px;
+        }
+
+        #btn {
+            overflow: hidden;
+            width: 220px;
+            margin: 30px auto;
+        }
+
+        #btn a {
+            width: 100px;
+            height: 40px;
+            color: #000;
+            text-align: center;
+            line-height: 40px;
+            background-color: darkgray;
+            float: left;
+            margin-right: 10px;
+        }
+
+        #btn a:hover {
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="content">
+        <ul id="contentUl">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </div>
+    <div id="btn">
+        <a id="left" href="javascript:;">&lt;&lt;向左</a>
+        <a id="right" href="javascript:;">向右&gt;&gt;</a>
+    </div>
+</div>
+<script src="myjslib.js"></script>
+<script>
+    window.onload = function () {
+        (function () {
+            var oContainer = document.getElementById('container');
+            var oContent = document.getElementById('content');
+            var oUl = document.getElementById('contentUl');
+            var aLi = oUl.children;
+            var oLeft = document.getElementById('left');
+            var oRight = document.getElementById('right');
+            var timer = null;
+            var speed = 10;
+            oUl.innerHTML += oUl.innerHTML;
+            var maxWidth = (aLi[0].offsetWidth + 10) * aLi.length;
+            oContent.style.width = maxWidth + 'px';
+            function run(direction) {
+                timer = setInterval(function () {
+                    if (direction == -1) {
+                        if (-oContent.offsetLeft > (maxWidth - oContainer.offsetWidth)) {
+                            oContent.style.left = -aLi[0].offsetWidth + 'px';
+                        }
+                    } else if (direction == 1) {
+                        if (oContent.offsetLeft > 10) {
+                            oContent.style.left = -maxWidth / 2 + 10 + 'px';
+                        }
+                    }
+//                    oContent.style.left = oContent.offsetLeft + direction * speed + 'px';
+                    animate(oContent, {left: oContent.offsetLeft + direction * speed});
+                }, 100);
+            }
+
+            run(-1);
+            oRight.onclick = function () {
+                clearInterval(timer);
+                run(1);
+            };
+            oLeft.onclick = function () {
+                clearInterval(timer);
+                run(-1);
+            };
+        })();
+    }
+</script>
+</body>
+</html>
