@@ -23,7 +23,7 @@
         }
     </style>
 </head>
-<body>
+<body onselectstart="return false;">
     <div id="container">
         <img src="images/1.jpg"/>
         <img src="images/2.jpg"/>
@@ -65,7 +65,7 @@
                 elem.pos = {
                     left:elem.offsetLeft,
                     top:elem.offsetTop
-                }
+                };
                 document.onmousemove = function (e) {
                     e = e || window.event;
 
@@ -99,7 +99,7 @@
                     }
                     console.log(collide);
                     return false;
-                }
+                };
                 document.onmouseup = function(){
                     document.onmousemove = null;
 
@@ -107,7 +107,7 @@
                         animate(elem,{
                             left:nearElem.offsetLeft,
                             top:nearElem.offsetTop
-                        })
+                        });
                         animate(nearElem,elem.pos);
                         nearElem.className = '';
                         nearElem = null;
@@ -142,6 +142,7 @@
                 return true;
             }
         }
+
         /*
          找出距离最近的
          elem  拖拽的元素
@@ -161,7 +162,6 @@
                 }
             }
             return collide[index];
-
         }
 
 
