@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>找出最长和最短单词</title>
+</head>
+<body>
+<script>
+    var s = 'red green blue black sky me I xxxxxxx wiwiwiwiwiw';
+    function find(string) {
+        var arr = string.split(' ');
+        var max = arr[0].length;
+        var min = arr[0].length;
+        var maxWord = arr[0];
+        var minWord = arr[0];
+        for (var i = 0; i < arr.length; i++) {
+           if (min>arr[i].length){
+               min = arr[i].length;
+               minWord = arr[i];
+           }else {
+               max = arr[i].length;
+               maxWord = arr[i];
+           }
+
+        }
+
+//        min = arr[arr2[0].index];
+        console.log('最短单词是：' + minWord);
+        console.log('最长单词是：' + maxWord);
+    }
+    find(s);
+</script>
+</body>
+</html>

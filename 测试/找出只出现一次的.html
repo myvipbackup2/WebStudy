@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>找出只出现一次的</title>
+</head>
+<body>
+<script>
+    var s = 'abaccdeff';
+    function findOnce(str) {
+
+        for (var i = 0; i < str.length; i++) {
+
+//            if (str.indexOf(str.charAt(i)) == str.lastIndexOf(str.charAt(i))) {
+//                console.log(str.charAt(i));
+//                break;
+//            }
+
+            if (str.split(str.charAt(i)).length == 2) {  //按字母分割，如果只有一个就分割出2个数组
+                console.log(str.charAt(i));
+                break;
+            }
+
+        }
+
+
+    }
+    findOnce(s);
+</script>
+</body>
+</html>

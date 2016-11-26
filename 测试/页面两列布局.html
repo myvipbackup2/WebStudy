@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>页面两列布局</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        b{
+            color: #ffff00;
+            font-size: 20px;
+        }
+        div{
+            text-align: center;
+        }
+        #left{
+            width: 200px;
+            min-width: 200px;
+            height: 200px;
+            background-color: red;
+            position: absolute;
+        }
+        #right{
+            background-color: #00ff00;
+            height: 300px;
+            margin-left: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div id="left">
+        <b>这是固定区域</b>
+    </div>
+    <div id="right">
+        <b>这是自适应区域</b>
+    </div>
+</body>
+</html>
