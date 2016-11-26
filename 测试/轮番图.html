@@ -57,12 +57,8 @@
             width: 60px;
             height: 60px;
             float: left;
-            opacity:0.6;
-            filter:'alpha(opacity=60)';
-        }
-        #prev:hover{
-            opacity:1;
-            filter:'alpha(opacity=100)';
+            opacity:0;
+            filter:'alpha(opacity=0)';
         }
 
         #next {
@@ -71,13 +67,8 @@
             height: 60px;
             display: block;
             float: right;
-            opacity:0.6;
-            filter:'alpha(opacity=60)';
-        }
-
-        #next:hover{
-            opacity:1;
-            filter:'alpha(opacity=100)';
+            opacity:0;
+            filter:'alpha(opacity=0)';
         }
 
         #small{
@@ -157,5 +148,37 @@
         </ul>
     </div>
 </div>
+
+
+<script>
+    window.onload = function () {
+
+        (function () {
+
+            var oContainer = document.getElementById('container');
+            var oNext = document.getElementById('next');
+            var oPrev = document.getElementById('prev');
+
+
+            oContainer.onmousemove = function (e) {
+                e = e || event;
+                var iDisX = e.clientX - this.offsetLeft;
+                if (iDisX<=oContainer.offsetWidth/2){
+                    oPrev.style.opacity = '1';
+                    oPrev.style.filter = 'alpha(opacity=100)';
+                    oNext.style.opacity = '0';
+                    oNext.style.filter = 'alpha(opacity=0)';
+                }else {
+                    oPrev.style.opacity = '0';
+                    oPrev.style.filter = 'alpha(opacity=0)';
+                    oNext.style.opacity = '1';
+                    oNext.style.filter = 'alpha(opacity=100)';
+                }
+            }
+
+        })();
+
+    }
+</script>
 </body>
 </html>
