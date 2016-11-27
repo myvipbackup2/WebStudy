@@ -231,8 +231,10 @@
                 aSmallLi[i].index = i;
                 aBigLi[i].index = i;
                 aSmallLi[i].onclick = function () {
-                    index = this.index;
-                    changeImg(index);
+                    if (this.index != index){
+                        index = this.index;
+                        changeImg(index);
+                    }
                 }
             }
 

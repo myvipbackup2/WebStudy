@@ -171,10 +171,10 @@
         oLeft.onmouseover = oRight.onmouseover = function(){
             animate(this,{opacity:100});
             //this.style.opacity = 1;
-        }
+        };
         oLeft.onmouseout = oRight.onmouseout = function(){
             animate(this,{opacity:0});
-        }
+        };
         oLeftBtn.onclick = oRightBtn.onclick = function(){
 
             if(this == oLeftBtn){
@@ -189,7 +189,7 @@
                 }
             }
             changeImg(iNow);
-        }
+        };
 
         function changeImg(idx){
             aBigImg[idx].style.zIndex = zIndex++;
