@@ -202,10 +202,13 @@
             var oSmallUl = oSmall.children[0];
             var aSmallLi = oSmallUl.children;
             var oNum = document.getElementById('num');
+            var oText = document.getElementById('text');
             var index = 0;
             var timer = null;
             var zIndex = aBigLi.length;
+            var aText = ['1111','2222','3333','4444','5555','6666'];
             oNum.innerHTML = (index + 1) + '/' + aBigLi.length;  //初始化图片位置的数字
+            oText.innerHTML = aText[index];
             oSmallUl.style.width = (10 + aSmallLi[0].offsetWidth) * aSmallLi.length + 'px';
             oBig.onmousemove = function (e) {  //左右2个按钮出现
                 e = e || event;
@@ -241,6 +244,7 @@
                 aSmallLi[index].className = 'selected';
                 aBigLi[index].style.zIndex = ++zIndex;
                 oNum.innerHTML = (index + 1) + '/' + aBigLi.length;
+                oText.innerHTML = aText[index];
                 animate(aBigLi[index], {height: 320});
                 if (index == 0) {
                     animate(oSmallUl, {left: 0});
