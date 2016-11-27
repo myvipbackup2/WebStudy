@@ -41,6 +41,8 @@
             position: absolute;
             top: 0;
             left: 0;
+            overflow: hidden;
+        / / 不写会导致没有动画效果，因为li高度为0也会显示图片
         }
 
         #banner img {
@@ -58,7 +60,7 @@
             z-index: 9999999;
         }
 
-        #prev,#next{
+        #prev, #next {
             width: 60px;
             height: 60px;
             opacity: 0;
@@ -77,8 +79,18 @@
             margin-right: 10px;
         }
 
+        #prev.active, #next.active {
+            opacity: 0.7;
+            filter: Alpha(Opacity=70);
+            -webkit-transition: all 0.5s;
+            -moz-transition: all 0.5s;
+            -ms-transition: all 0.5s;
+            -o-transition: all 0.5s;
+            transition: all 0.5s;
+        }
+
         #small {
-            background-color: #939a93;
+            background-color: #999;
             width: 400px;
             height: 114px;
             position: absolute;
@@ -89,6 +101,7 @@
         #small ul {
             /*width: 780px;*/
             height: 114px;
+            position: relative;
         }
 
         #small li {
@@ -96,6 +109,16 @@
             filter: 'alpha(opacity=60)';
             height: 114px;
             float: left;
+        }
+
+        #small li:hover, #small li.selected {
+            filter: 'alpha(opacity=100)';
+            opacity: 1;
+            -webkit-transition: all 0.5s;
+            -moz-transition: all 0.5s;
+            -ms-transition: all 0.5s;
+            -o-transition: all 0.5s;
+            transition: all 0.5s;
         }
 
         #small img {
@@ -153,7 +176,7 @@
     </div>
     <div id="small">
         <ul>
-            <li style="filter:'alpha(opacity=100)'; opacity: 1;"><img src="img/1.jpg" alt=""></li>
+            <li class="selected"><img src="img/1.jpg" alt=""></li>
             <li><img src="img/2.jpg" alt=""></li>
             <li><img src="img/3.jpg" alt=""></li>
             <li><img src="img/4.jpg" alt=""></li>
@@ -163,7 +186,7 @@
     </div>
 </div>
 
-
+<script src="myjslib.js"></script>
 <script>
     window.onload = function () {
 
@@ -172,54 +195,93 @@
             var oContainer = document.getElementById('container');
             var oBanner = document.getElementById('banner');
             var oBig = document.getElementById('big');
-            var aBingLi = oBanner.children;
-            var aBingImg = oBanner.getElementsByTagName('img');
+            var aBigLi = oBanner.children;
             var oNext = document.getElementById('next');
             var oPrev = document.getElementById('prev');
             var oSmall = document.getElementById('small');
             var oSmallUl = oSmall.children[0];
-            var aSmaillLi = oSmallUl.children;
-            var aSmallImg = oSmallUl.getElementsByTagName('img');
+            var aSmallLi = oSmallUl.children;
+            var oNum = document.getElementById('num');
             var index = 0;
-            var zIndex = aBingLi.length;
-            oSmallUl.style.width = (10 + aSmallImg[0].offsetWidth) * aSmallImg.length + 'px';
+            var timer = null;
+            var zIndex = aBigLi.length;
+            oNum.innerHTML = (index + 1) + '/' + aBigLi.length;  //初始化图片位置的数字
+            oSmallUl.style.width = (10 + aSmallLi[0].offsetWidth) * aSmallLi.length + 'px';
             oBig.onmousemove = function (e) {  //左右2个按钮出现
                 e = e || event;
                 var iDisX = e.clientX - oContainer.offsetLeft;
                 if (iDisX <= oContainer.offsetWidth / 2) {
-                    oPrev.style.opacity = '0.7';
-                    oPrev.style.filter = 'alpha(opacity=70)';
-                    oNext.style.opacity = '0';
-                    oNext.style.filter = 'alpha(opacity=0)';
+                    oPrev.className = 'active';
+                    oNext.className = '';
                 } else {
-                    oPrev.style.opacity = '0';
-                    oPrev.style.filter = 'alpha(opacity=0)';
-                    oNext.style.opacity = '0.7';
-                    oNext.style.filter = 'alpha(opacity=70)';
+                    oPrev.className = '';
+                    oNext.className = 'active';
                 }
             };
             oBig.onmouseout = function () {
-                oPrev.style.opacity = '0';
-                oPrev.style.filter = 'alpha(opacity=0)';
-                oNext.style.opacity = '0';
-                oNext.style.filter = 'alpha(opacity=0)';
+                oPrev.className = '';
+                oNext.className = '';
             };
 
-            for (var i = 0; i < aBingImg.length; i++) {
-                aBingLi[i].style.zIndex = zIndex - i;
-                aBingImg[i].index = i;
-                aSmallImg[i].index = i;
-                aSmaillLi[i].index = i;
-                aBingLi[i].index = i;
-                aSmaillLi.onclick = function () {
+            for (var i = 0; i < aBigLi.length; i++) {
+                aBigLi[i].style.zIndex = zIndex - i;
+                aSmallLi[i].index = i;
+                aBigLi[i].index = i;
+                aSmallLi[i].onclick = function () {
                     index = this.index;
                     changeImg(index);
                 }
             }
 
             function changeImg(index) {
-//                aBingLi[index].
+                for (var i = 0; i < aSmallLi.length; i++) {
+                    aSmallLi[i].className = '';
+                }
+                aBigLi[index].style.height = '0';
+                aSmallLi[index].className = 'selected';
+                aBigLi[index].style.zIndex = ++zIndex;
+                oNum.innerHTML = (index + 1) + '/' + aBigLi.length;
+                animate(aBigLi[index], {height: 320});
+                if (index == 0) {
+                    animate(oSmallUl, {left: 0});
+                } else if (index == aSmallLi.length-1) {
+                    animate(oSmallUl,{left:-(index-2)*aSmallLi[0].offsetWidth});
+                } else {
+                    animate(oSmallUl,{left:-(index-1)*aSmallLi[0].offsetWidth});
+                }
             }
+
+            oNext.onclick = oPrev.onclick = function () {
+                if (this == oPrev) {
+                    index--;
+                    if (index == -1) {
+                        index = aBigLi.length - 1;
+                    }
+                } else {
+                    index++;
+                    if (index == aBigLi.length) {
+                        index = 0;
+                    }
+                }
+                changeImg(index);
+            };
+
+            function run() {
+                timer = setInterval(function () {
+                   oNext.onclick();
+                },1500)
+            }
+
+            run();
+
+            oContainer.onmouseover = function () {
+                clearInterval(timer);
+            };
+
+            oContainer.onmouseout = function () {
+                run();
+            }
+
 
         })();
 
