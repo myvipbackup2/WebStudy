@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>快速排序算法</title>
+</head>
+<body>
+<script>
+    //不用自带的sort()方法写一个排序的方法；
+
+    function quickSort(arr) {
+
+        if (arr.length <= 1) {  //输入了一个数
+            return arr;
+        }
+
+        var mid = Math.floor(arr.length / 2);  //取到数组中的中间位置
+        var midValue = arr.splice(mid, 1);  //取到中间位置的值，并且从数组中删除
+        var left = [];
+        var right = [];
+
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i] < midValue) {
+                left.push(arr[i]);
+            } else {  //大于等于midValue的
+                right.push(arr[i]);
+            }
+        }
+
+        return quickSort(left).concat([midValue], quickSort(right));
+
+    }
+
+    var data = [11, 23, 1, 46, 32, 12, 78, 40, 82, 13, 45, 64, 21];
+
+    alert(quickSort(data));
+
+</script>
+</body>
+</html>
