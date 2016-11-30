@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>A-star寻路算法</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul, ol {
+            list-style: none;
+        }
+
+        #ul {
+            border: 1px solid #000000;
+            border-bottom: none;
+            border-right: none;
+            margin: 50px auto;
+            overflow: hidden;
+        }
+
+        #ul li {
+            border: 1px solid #000000;
+            border-top: none;
+            border-left: none;
+            float: left;
+        }
+
+        #ul li.red {
+            background-color: red;
+        }
+
+        #ul li.green {
+            background-color: green;
+        }
+
+        #ul li.blue {
+            background-color: blue;
+        }
+
+        #btn {
+            /*width: 100px;*/
+            /*position: absolute;*/
+            /*left:50%;*/
+            /*margin-left: -50px;*/
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+
+<ul id="ul"></ul>
+
+<button id="btn">开始寻路</button>
+
+<script>
+
+    var oUl = document.getElementById('ul');
+    var aLi = document.getElementsByTagName('li');
+    var map = [
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 2, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+    ];
+    var cols = Math.sqrt(map.length);  //因为是正方形，开方得到行数
+    var sizeGird = 20;  //每个格子的大小
+
+
+    init();
+
+    function init() {
+        createMap();
+    }
+
+    function createMap() {
+
+        oUl.style.width = cols * (sizeGird + 1) + 1 + 'px';  //初始化UL宽度
+
+        for (var i = 0; i < map.length; i++) {
+            var oLi = document.createElement('li');
+            oLi.style.width = oLi.style.height = sizeGird + 'px';
+            oUl.appendChild(oLi);
+
+            if (map[i] == 1) {
+                oLi.className = 'red';  //起始位置
+            } else if (map[i] == 2) {
+                oLi.className = 'green';  //障碍物位置
+            } else if (map[i] == 3) {
+                oLi.className = 'blue';  //终点位置
+            }
+
+        }
+
+
+    }
+
+
+</script>
+
+</body>
+</html>
