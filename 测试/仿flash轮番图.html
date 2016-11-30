@@ -80,13 +80,13 @@
         }
 
         #prev.active, #next.active {
-            opacity: 0.7;
-            filter: Alpha(Opacity=70);
-            -webkit-transition: all 0.5s;
-            -moz-transition: all 0.5s;
-            -ms-transition: all 0.5s;
-            -o-transition: all 0.5s;
-            transition: all 0.5s;
+            /*opacity: 0.7;*/
+            /*filter: Alpha(Opacity=70);*/
+            /*-webkit-transition: all 0.5s;*/
+            /*-moz-transition: all 0.5s;*/
+            /*-ms-transition: all 0.5s;*/
+            /*-o-transition: all 0.5s;*/
+            /*transition: all 0.5s;*/
         }
 
         #small {
@@ -109,6 +109,7 @@
             filter: 'alpha(opacity=60)';
             height: 114px;
             float: left;
+            margin: 10px 0 10px 10px;
         }
 
         #small li:hover, #small li.selected {
@@ -125,7 +126,6 @@
             width: 120px;
             height: 94px;
             float: left;
-            margin: 10px 0 10px 10px;
             cursor: pointer;
         }
 
@@ -206,7 +206,7 @@
             var index = 0;
             var timer = null;
             var zIndex = aBigLi.length;
-            var aText = ['1111','2222','3333','4444','5555','6666'];
+            var aText = ['1111', '2222', '3333', '4444', '5555', '6666'];
             oNum.innerHTML = (index + 1) + '/' + aBigLi.length;  //初始化图片位置的数字
             oText.innerHTML = aText[index];
             oSmallUl.style.width = (10 + aSmallLi[0].offsetWidth) * aSmallLi.length + 'px';
@@ -214,16 +214,23 @@
                 e = e || event;
                 var iDisX = e.clientX - oContainer.offsetLeft;
                 if (iDisX <= oContainer.offsetWidth / 2) {
-                    oPrev.className = 'active';
-                    oNext.className = '';
+//                    oPrev.className = 'active';
+//                    oNext.className = '';
+                    oNext.style.opacity = 0;
+                    animate(oPrev,{opacity:80});
                 } else {
-                    oPrev.className = '';
-                    oNext.className = 'active';
+//                    oPrev.className = '';
+//                    oNext.className = 'active';
+                    oPrev.style.opacity = 0;
+                    animate(oNext,{opacity:80});
                 }
             };
             oBig.onmouseout = function () {
-                oPrev.className = '';
-                oNext.className = '';
+//                oPrev.className = '';
+//                oNext.className = '';
+                animate(oPrev,{opacity:0});
+                animate(oNext,{opacity:0});
+
             };
 
             for (var i = 0; i < aBigLi.length; i++) {
@@ -231,7 +238,7 @@
                 aSmallLi[i].index = i;
                 aBigLi[i].index = i;
                 aSmallLi[i].onclick = function () {
-                    if (this.index != index){
+                    if (this.index != index) {
                         index = this.index;
                         changeImg(index);
                     }
@@ -248,12 +255,12 @@
                 oNum.innerHTML = (index + 1) + '/' + aBigLi.length;
                 oText.innerHTML = aText[index];
                 animate(aBigLi[index], {height: 320});
-                if (index == 0) {
+                if (index == 0) {  //如果是第一张图
                     animate(oSmallUl, {left: 0});
-                } else if (index == aSmallLi.length-1) {
-                    animate(oSmallUl,{left:-(index-2)*aSmallLi[0].offsetWidth});
-                } else {
-                    animate(oSmallUl,{left:-(index-1)*aSmallLi[0].offsetWidth});
+                } else if (index == aSmallLi.length - 1) {  //最后一张图片
+                    animate(oSmallUl, {left: -(index - 2) * (aSmallLi[0].offsetWidth+10)});
+                } else {  //其他中间的图片移动的通用算法（index-1）*宽度
+                    animate(oSmallUl, {left: -(index - 1) * (aSmallLi[0].offsetWidth+10)});
                 }
             }
 
@@ -274,8 +281,8 @@
 
             function run() {
                 timer = setInterval(function () {
-                   oNext.onclick();
-                },1500)
+                    oNext.onclick();
+                }, 1500)
             }
 
             run();
@@ -286,8 +293,12 @@
 
             oContainer.onmouseout = function () {
                 run();
-            }
+            };
 
+            document.onmousedown = function (e) {
+                e = e || event;
+                e.preventDefault();
+            }
 
         })();
 

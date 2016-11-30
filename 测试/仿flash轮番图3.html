@@ -152,7 +152,7 @@
             </ul>
         </div>
     </div>
-    <script src="jslib.js"></script>
+    <script src="myjslib.js"></script>
     <script>
         var oContainer = document.getElementById('container');
         var oLeft = document.getElementById('left');
@@ -170,7 +170,6 @@
         //
         oLeft.onmouseover = oRight.onmouseover = function(){
             animate(this,{opacity:100});
-            //this.style.opacity = 1;
         };
         oLeft.onmouseout = oRight.onmouseout = function(){
             animate(this,{opacity:0});
