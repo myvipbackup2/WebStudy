@@ -60,6 +60,9 @@
 
     var oUl = document.getElementById('ul');
     var aLi = document.getElementsByTagName('li');
+    var oBeginLi = oUl.getElementsByClassName('red')[0];
+    var oEndLi = oUl.getElementsByClassName('green')[0];
+
     var map = [
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -82,17 +85,23 @@
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
     ];
+
     var cols = Math.sqrt(map.length);  //因为是正方形，开方得到行数
     var sizeGird = 20;  //每个格子的大小
+    var openArr = [];  //排序估价函数
+    var closeArr = [];  //排除干扰节点
 
 
     init();
 
     function init() {
         createMap();
+        oBtn.onclick = function () {
+            openFn();
+        }
     }
 
-    function createMap() {
+    function createMap() {  //创建地图方法
 
         oUl.style.width = cols * (sizeGird + 1) + 1 + 'px';  //初始化UL宽度
 
@@ -112,6 +121,40 @@
         }
 
 
+    }
+
+    function openFn() {
+
+        var nowLi = openArr.shift();
+
+    }
+
+    function closeFn() {
+
+    }
+
+    /*
+     A*估价函数
+     f(n)  =  g(n) + h(n)
+     f(n)是n节点的估价函数
+     g(n)是初始点到n节点的实际代价
+     h(n)是n节点到目标点的实际代价
+     */
+
+    function f(nodeLi) {
+        return g(nodeLi) + h(nodeLi);
+    }
+
+    function g(nodeLi) {
+        var a = oBeginLi.offsetLeft - nodeLi.offsetLeft;
+        var b = oBeginLi.offsetTop - nodeLi.offsetTop;
+        return Math.sqrt(a * a + b * b);
+    }
+
+    function h(nodeLi) {
+        var a = oEndLi.offsetLeft - nodeLi.offsetLeft;
+        var b = oEndLi.offsetTop - nodeLi.offsetTop;
+        return Math.sqrt(a * a + b * b);
     }
 
 
