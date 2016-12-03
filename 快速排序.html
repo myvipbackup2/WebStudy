@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>快速排序</title>
+</head>
+<body>
+<script>
+
+    //不用自带的sort（）方法自己写一个排序
+    //使用快速排序的方法
+
+    function quickSort(arr) {
+
+        if (arr.length<=1){  //如果数组只有1个直接返回数组，也是程序递归结束的条件
+            return arr;
+        }
+
+        var mid = Math.floor(arr.length/2);  //取到数据中间的下标
+        var midValue = arr[mid];  //取到数组中间的那个值
+        var left = [];  //分成左右2个数组，左边都是比mid小的，右边都是比mid大的
+        var right = [];
+
+    }
+
+    var data = [22,4,55,13,89,123,78,11,5];
+
+    quickSort(data);
+
+</script>
+</body>
+</html>
