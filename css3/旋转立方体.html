@@ -12,6 +12,8 @@
         body {
             background-color: #000;
             perspective: 800px;
+            /*perspective-origin: center -100%;*/
+
         }
 
         #container {
@@ -19,8 +21,8 @@
             height: 200px;
             margin: 150px auto;
             position: relative;
-            transform-style: preserve-3D;
-            animation: rotateCube 1.5s linear infinite;
+            transform-style: preserve-3d;
+            animation: rotateCube 3s linear infinite;
         }
 
         @-webkit-keyframes rotateCube {
@@ -28,7 +30,7 @@
 
             }
             to{
-                transform: rotateY(-360deg);
+                transform: rotateX(-360deg) rotateY(-720deg);
             }
         }
 
@@ -41,27 +43,29 @@
             background-color: rgba(255, 255, 255, 0.6);
             border-radius: 10px;
             position: absolute;
+            /*transform: rotate(45deg);*/
+
         }
 
         .four{
-            transform: rotateY(180deg) translateZ(100px);
+            transform: rotateY(180deg) scale3d(1.2,1.2,1.2) translateZ(100px);  /*scale3d可以整体缩放，但是要写前面否则无效*/
         }
         
         .one{
-            transform: rotateX(90deg) translateZ(100px);
+            transform: rotateX(90deg) scale3d(1.2,1.2,1.2) translateZ(100px);
         }
 
         .six{
-            transform: rotateY(-90deg) translateZ(100px);
+            transform: rotateY(-90deg) scale3d(1.2,1.2,1.2) translateZ(100px);
         }
         .five{
-            transform: rotateY(90deg) translateZ(100px);
+            transform: rotateY(90deg) scale3d(1.2,1.2,1.2) translateZ(100px);
         }
         .three{
-            transform: rotateX(-90deg) translateZ(100px);
+            transform: rotateX(-90deg) scale3d(1.2,1.2,1.2) translateZ(100px);
         }
         .two{
-            transform: translateZ(100px);
+            transform: scale3d(1.2,1.2,1.2) translateZ(100px);
         }
 
 
