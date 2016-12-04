@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS3钟</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        #clock {
+            width: 200px;
+            height: 200px;
+            border: 2px solid #000000;
+            border-radius: 50%;
+            margin: 150px auto;
+            position: relative;
+        }
+
+        #clock li {
+            width: 2px;
+            height: 4px;
+            background-color: #000;
+            position: absolute;
+            top: 0;
+            left: 99px;
+            transform-origin: center 100px;
+        }
+
+        #clock li:nth-child(5n+1) {
+            height: 8px;
+        }
+
+        #hour, #minute, #second {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform-origin: center bottom;
+        }
+
+        #hour {
+            width: 6px;
+            height: 35px;
+            background-color: #000000;
+            margin-left: -3px;
+            margin-top: -35px;
+        }
+
+        #minute {
+            width: 4px;
+            height: 45px;
+            background: #00ff00;
+            margin-left: -2px;
+            margin-top: -45px;
+        }
+
+        #second {
+            width: 2px;
+            height: 55px;
+            background: #f00;
+            margin-left: -1px;
+            margin-top: -55px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="clock">
+    <ul id="scale"></ul>
+    <!--<ul id="unm">-->
+        <!--<li>12</li>-->
+        <!--<li>1</li>-->
+        <!--<li>2</li>-->
+        <!--<li>3</li>-->
+        <!--<li>4</li>-->
+        <!--<li>5</li>-->
+        <!--<li>6</li>-->
+        <!--<li>7</li>-->
+        <!--<li>8</li>-->
+        <!--<li>9</li>-->
+        <!--<li>10</li>-->
+        <!--<li>11</li>-->
+    <!--</ul>-->
+    <div id="hour"></div>
+    <div id="minute"></div>
+    <div id="second"></div>
+</div>
+
+<script>
+
+    window.onload = function () {
+        (function () {
+
+            var oHour = document.getElementById('hour');
+            var oMinute = document.getElementById('minute');
+            var oSecond = document.getElementById('second');
+            var oUl = document.getElementById('scale');
+            var li = '';
+            for (var i = 0; i < 60; i++) {
+                li += '<li style="-webkit-transform: rotate(' + i * 6 + 'deg);-moz-transform: rotate(' + i * 6 + 'deg);-ms-transform: rotate(' + i * 6 + 'deg);-o-transform: rotate(' + i * 6 + 'deg);transform: rotate(' + i * 6 + 'deg);"></li>'
+            }
+            oUl.innerHTML = li;
+
+           function run() {
+               var date = new Date();
+               var second = date.getSeconds();
+               var minute = date.getMinutes() + second / 60;
+               var hour = date.getHours() + minute / 60;
+
+               oHour.style.webkitTransform = 'rotate(' + hour * 30 + 'deg)';
+               oMinute.style.webkitTransform = 'rotate(' + minute * 6 + 'deg)';
+               oSecond.style.webkitTransform = 'rotate(' + second * 6 + 'deg)';
+           }
+
+           run();
+
+           setInterval(run,1000);
+
+        })();
+    }
+
+</script>
+</body>
+</html>
