@@ -36,6 +36,48 @@
             height: 8px;
         }
 
+        /*#scale li:nth-child(5n+1):after{
+            position: relative;
+            left: -7px;
+            top: 5px;
+        }
+        #scale li:nth-child(1):after{
+            content: '12';
+        }
+        #scale li:nth-child(6):after{
+            content: '1';
+        }
+        #scale li:nth-child(11):after{
+            content: '2';
+        }
+        #scale li:nth-child(16):after{
+            content: '3';
+        }
+        #scale li:nth-child(21):after{
+            content: '4';
+        }
+        #scale li:nth-child(26):after{
+            content: '5';
+        }
+        #scale li:nth-child(31):after{
+            content: '6';
+        }
+        #scale li:nth-child(36):after{
+            content: '7';
+        }
+        #scale li:nth-child(41):after{
+            content: '8';
+        }
+        #scale li:nth-child(46):after{
+            content: '9';
+        }
+        #scale li:nth-child(51):after{
+            content: '10';
+        }
+        #scale li:nth-child(56):after{
+            content: '11';
+        }*/
+
         #hour, #minute, #second {
             position: absolute;
             top: 50%;
@@ -68,10 +110,72 @@
             margin-top: -90px;
         }
 
+        #num{
+            position: relative;
+        }
+
         #num li{
             position: absolute;
-            top: 200px;
-            left: 0;
+        }
+
+        #num li:nth-child(1){
+            top: 5px;
+            left: 92px;
+        }
+
+        #num li:nth-child(2){
+            top: 14px;
+            left: 138px;
+        }
+
+        #num li:nth-child(3){
+            top: 45px;
+            left: 170px;
+        }
+
+        #num li:nth-child(4){
+            top: 91px;
+            left: 184px;
+        }
+
+        #num li:nth-child(5){
+            top: 136px;
+            left: 170px;
+        }
+
+        #num li:nth-child(6){
+            top: 166px;
+            left: 138px;
+        }
+
+        #num li:nth-child(7){
+            top: 176px;
+            left: 96px;
+        }
+
+        #num li:nth-child(8){
+            top: 166px;
+            left: 54px;
+        }
+
+        #num li:nth-child(9){
+            top: 136px;
+            left: 22px;
+        }
+
+        #num li:nth-child(10){
+            top: 90px;
+            left: 9px;
+        }
+
+        #num li:nth-child(11){
+            top: 45px;
+            left: 20px;
+        }
+
+        #num li:nth-child(12){
+            top: 14px;
+            left: 54px;
         }
 
     </style>
@@ -79,20 +183,20 @@
 <body>
 <div id="clock">
     <ul id="scale"></ul>
-    <!--<ul id="unm">-->
-        <!--<li>12</li>-->
-        <!--<li>1</li>-->
-        <!--<li>2</li>-->
-        <!--<li>3</li>-->
-        <!--<li>4</li>-->
-        <!--<li>5</li>-->
-        <!--<li>6</li>-->
-        <!--<li>7</li>-->
-        <!--<li>8</li>-->
-        <!--<li>9</li>-->
-        <!--<li>10</li>-->
-        <!--<li>11</li>-->
-    <!--</ul>-->
+    <ul id="num">
+        <li>12</li>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+        <li>11</li>
+    </ul>
     <div id="hour"></div>
     <div id="minute"></div>
     <div id="second"></div>
