@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>旋转木马</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #state {
+            width: 1000px;
+            height: 400px;
+            background: #cccccc;
+            margin: 100px auto;
+            -webkit-box-shadow: 10px 10px 5px #999;
+            -moz-box-shadow: 10px 10px 5px #999;
+            box-shadow: 10px 10px 5px #999;
+            position: relative;
+            perspective: 800px;
+            perspective-origin: center -10%;
+        }
+
+        #container {
+            width: 128px;
+            height: 100px;
+            position: absolute;
+            left: 50%;
+            margin-left: -64px;
+            top: 30%;
+            transform-style: preserve-3d;
+            transition: all .6s ease-in-out;
+        }
+
+        #container img {
+            width: 128px;
+            height: 100px;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div id="state">
+    <div id="container">
+        <img src="img/1.jpg" alt="">
+        <img src="img/2.jpg" alt="">
+        <img src="img/3.jpg" alt="">
+        <img src="img/4.jpg" alt="">
+        <img src="img/5.jpg" alt="">
+        <img src="img/6.jpg" alt="">
+        <img src="img/7.jpg" alt="">
+        <img src="img/8.jpg" alt="">
+        <img src="img/9.jpg" alt="">
+    </div>
+</div>
+
+<script>
+
+    var oContainer = document.getElementById('container');
+    var aImg = document.getElementsByTagName('img');
+    var translateDis = (aImg[0].offsetWidth / 2) / Math.tan(20 * Math.PI / 180);
+    var idx = 0;
+
+    for (var i = 0; i < aImg.length; i++) {
+        aImg[i].style.WebkitTransform = 'rotateY(' + -40 * i + 'deg) translateZ(' + (translateDis + 20) + 'px)';
+    }
+
+    oContainer.onclick = function () {
+
+        idx++;
+        this.style.transform = 'rotateY(' + -40 * idx + 'deg)'
+
+    }
+
+
+</script>
+</body>
+</html>
