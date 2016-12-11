@@ -116,13 +116,20 @@
                 this.style.transitionDuration = '0.3s';
                 this.style.opacity = 0.6;
                 this.style.transform = currentTransform + 'scale(2)';
-                var that = this;
-                setTimeout(function () {
-                    that.style.opacity = 1;
-                    that.style.transform = '';//去掉内联样式
-                    that.style.transitionDuration = '0.8s';
-                    that.state = true;
-                }, 300)
+//                var that = this;
+//                setTimeout(function () {
+//                    that.style.opacity = 1;
+//                    that.style.transform = '';//去掉内联样式
+//                    that.style.transitionDuration = '0.8s';
+//                    that.state = true;
+//                }, 300);
+                function fn() {
+                    this.style.opacity = 1;
+                    this.style.transform = '';
+                    this.state = true;
+                    this.removeEventListener('webkitTransitionEnd',fn);
+                }
+                this.addEventListener('webkitTransitionEnd',fn,false);
             }
         }
 
