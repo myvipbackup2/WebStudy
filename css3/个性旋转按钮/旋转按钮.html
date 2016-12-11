@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>旋转按钮</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 49px;
+            height: 49px;
+        }
+
+        #container img {
+            cursor: pointer;
+        }
+
+        #home {
+            transition: all .8s ease;
+            width: 49px;
+            height: 49px;
+            position: absolute;
+        }
+
+        /*#home:hover {*/
+        /*transform: rotate(-360deg);*/
+        /*}*/
+
+        .menu {
+            width: 42px;
+            height: 42px;
+            transition: all .8s ease;
+            position: absolute;
+        }
+
+        .menu:nth-child(1).active {
+            transform: translateY(-200px) rotate(720deg);
+            transition-delay: 40ms;
+        }
+
+        .menu:nth-child(2).active {
+            transform: rotate(-22.5deg) translateY(-200px) rotate(742.5deg);
+            transition-delay: 30ms;
+        }
+
+        .menu:nth-child(3).active {
+            transform: rotate(-45deg) translateY(-200px) rotate(765deg);
+            transition-delay: 20ms;
+        }
+
+        .menu:nth-child(4).active {
+            transform: rotate(-67.5deg) translateY(-200px) rotate(787.5deg);
+            transition-delay: 10ms;
+        }
+
+        .menu:nth-child(5).active {
+            transform: rotate(-90deg) translateY(-200px) rotate(810deg);
+        }
+
+        /*.menu:nth-child(n).scale {*/
+        /*transform: scale(1.5);*/
+        /*}*/
+
+
+    </style>
+</head>
+<body>
+<div id="container">
+    <img class="menu" src="img/close.png" alt="">
+    <img class="menu" src="img/full.png" alt="">
+    <img class="menu" src="img/open.png" alt="">
+    <img class="menu" src="img/prev.png" alt="">
+    <img class="menu" src="img/refresh.png" alt="">
+    <div id="home">
+        <img src="img/home.png" alt="">
+    </div>
+</div>
+
+<script>
+    var oContainer = document.getElementById('container');
+    var oHome = document.getElementById('home');
+    var aMenu = oContainer.getElementsByClassName('menu');
+    var bFlag = false;
+    var i = 0;
+
+    oHome.onclick = function () {
+        if (!bFlag) {
+            for (i = 0; i < aMenu.length; i++) {
+                aMenu[i].className = 'menu active';
+            }
+            oHome.style.transform = 'rotate(-360deg)';
+        } else {
+            for (i = 0; i < aMenu.length; i++) {
+                aMenu[i].className = 'menu';
+//                this.style.transitionDuration = '0.3s';
+            }
+            oHome.style.transform = 'rotate(0deg)';
+        }
+        bFlag = !bFlag;
+    };
+
+    for (i = 0; i < aMenu.length; i++) {
+        aMenu[i].state = true;
+        aMenu[i].onclick = function () {
+            var currentTransform = getStyle(this, 'transform');
+            if (this.state) {
+//                如果点击比300ms还快就会导致还是可以点
+//                console.log(this.state);
+                this.state = false;
+                this.style.transitionDuration = '0.3s';
+                this.style.opacity = 0.6;
+                this.style.transform = currentTransform + 'scale(2)';
+                var that = this;
+                setTimeout(function () {
+                    that.style.opacity = 1;
+                    that.style.transform = '';//去掉内联样式
+                    that.style.transitionDuration = '0.8s';
+                    that.state = true;
+                }, 300)
+            }
+        }
+
+    }
+
+    function getStyle(elem, prop) {
+        if (elem.currentStyle) {
+            return elem.currentStyle[prop];
+        } else if (getComputedStyle) {
+            return getComputedStyle(elem, null)[prop];
+        }
+    }
+</script>
+</body>
+</html>
