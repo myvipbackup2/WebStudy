@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>手风琴特效</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        #container {
+            width: 1225px;
+            height: 460px;
+            margin: 100px auto;
+            overflow: hidden;
+        }
+
+        #container li {
+            float: left;
+            width: 245px;
+            height: 460px;
+            /*border-right: 1px solid #fff;*/
+            position: relative;
+            cursor: pointer;
+            transition: all 1s ease;
+        }
+
+        #container li a {
+            color: #fff;
+            font-size: 30px;
+            position: absolute;
+            bottom: 0;
+            height: 35px;
+            width: 1225px;
+            background-color: rgba(0, 0, 0, 0.5);
+            line-height: 35px;
+        }
+
+        #container:hover li {
+            width: 80px;
+        }
+
+        #container li:hover {
+            width: 905px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="container">
+    <ul>
+        <li><img src="img/1.jpg" alt=""><a href="">1</a></li>
+        <li><img src="img/2.jpg" alt=""><a href="">2</a></li>
+        <li><img src="img/3.jpg" alt=""><a href="">3</a></li>
+        <li><img src="img/4.jpg" alt=""><a href="">4</a></li>
+        <li><img src="img/5.jpg" alt=""><a href="">5</a></li>
+    </ul>
+</div>
+</body>
+</html>
