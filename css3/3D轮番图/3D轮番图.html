@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3D轮番图</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            width: 680px;
+            height: 344px;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        #img {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            perspective: 800px;
+        }
+
+        #img img {
+            width: 680px;
+            height: 344px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform-origin: bottom;
+            -webkit-transform: rotateX(180deg);
+            -moz-transform: rotateX(180deg);
+            -ms-transform: rotateX(180deg);
+            -o-transform: rotateX(180deg);
+            transform: rotateX(180deg);
+            opacity: 0;
+        }
+
+        #img img.show {
+            animation: show 1s ease forwards;
+        }
+
+        #img img.hide {
+            animation: hide 1s ease forwards;
+        }
+
+        @keyframes show {
+            0% {
+
+            }
+            50% {
+                transform: rotateX(-15deg);
+            }
+            70% {
+                transform: rotateX(10deg);
+            }
+            80% {
+                transform: rotateX(4deg);
+            }
+            90% {
+                transform: rotateX(-3deg);
+            }
+            100% {
+                transform: rotateX(0deg);
+                opacity: 1;
+            }
+        }
+
+        @keyframes hide {
+            from {
+                transform: rotateX(0deg);
+                opacity: 1;
+            }
+            to {
+                transform: rotateX(-180deg);
+                opacity: 0;
+            }
+        }
+
+        #container span {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #f90;
+            color: #fff;
+            display: block;
+            text-align: center;
+            line-height: 50px;
+            font-size: 45px;
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            margin-top: -25px;
+        }
+
+        #container span:hover {
+            background-color: orangered;
+        }
+
+        #prev {
+            left: -100px;
+        }
+
+        #next {
+            right: -100px;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="img">
+        <img class="show" src="img/1.jpg" alt="">
+        <img src="img/2.jpg" alt="">
+        <img src="img/3.jpg" alt="">
+        <img src="img/4.jpg" alt="">
+    </div>
+    <span id="prev">&lt;</span>
+    <span id="next">&gt;</span>
+</div>
+
+<script>
+
+    var oContainer = document.getElementById('container');
+    var aImg = oContainer.getElementsByTagName('img');
+    var oPrev = document.getElementById('prev');
+    var oNext = document.getElementById('next');
+    var index = 0;  //全局索引
+
+    oNext.onclick = function () {
+        aImg[index].className = 'hide';
+        index++;
+        if (index == aImg.length) {
+            index = 0;
+        }
+        aImg[index].className = 'show';
+    };
+
+    oPrev.onclick = function () {
+        aImg[index].className = 'hide';
+        index--;
+        if (index == -1) {
+            index = aImg.length - 1;
+        }
+        aImg[index].className = 'show';
+    }
+
+</script>
+</body>
+</html>
