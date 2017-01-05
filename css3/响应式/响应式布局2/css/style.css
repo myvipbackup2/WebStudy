@@ -24,7 +24,7 @@ h3, p {
     margin: 0 auto;
 }
 
-#header, #nav, #footer, #mainbody, #sidebar {
+#header, #nav, #footer, #main, #sidebar {
 
     line-height: 25px;
     background: #eee;
@@ -34,21 +34,22 @@ h3, p {
     border-radius: 5px;
 }
 
-#mainbody, #sidebar {
+#main, #sidebar {
     height: 300px;
     float: left;
     margin-bottom: 35px;
+    overflow: auto;
 }
 
-#mainbody {
+#main {
     width: 620px;
-    /*background:#ddefcb;*/
+    background: #ddefcb;
     margin-right: 20px;
 }
 
 #sidebar {
     width: 320px;
-    /*background:#ffcbdd;*/
+    background: #ffcbdd;
 }
 
 #footer {
@@ -112,14 +113,128 @@ ul {
 /*Media Queries*/
 
 @media (min-width: 1200px) {
-    .container{
+    .container {
         width: 1170px;
     }
-    #mainbody{
+
+    #main {
         width: 770px;
         margin-right: 30px;
     }
-    #sidebar{
+
+    #sidebar {
         width: 370px;
     }
 }
+
+@media (max-width: 959px) {
+    .container {
+        width: 100%;
+    }
+
+    #main {
+        width: 67%;
+        margin-right: 3%;
+    }
+
+    #sidebar {
+        width: 30%;
+        float: right;
+    }
+}
+
+@media (max-width: 767px) {
+    #main, #sidebar {
+        width: 100%;
+        float: none;
+    }
+
+    #header {
+        font-size: 12px;
+        text-align: left;
+        padding-left: 20px;
+    }
+
+    /* 切换按钮 */
+    .toggle-btn {
+        display: inline-block;
+        font-size: 25px;
+        background-color: #000;
+        color: #fff;
+        padding: 7px 10px;
+        border-radius: 5px;
+        text-decoration: none;
+        position: absolute;
+        right: 20px;
+        top: 50px;
+    }
+
+    /* 隐藏关闭按钮 */
+    #nav .close {
+        display: none;
+    }
+
+    #nav:target .close {
+        display: inline-block;
+    }
+
+    /* 初始隐藏导航 */
+    #nav {
+        display: none;
+    }
+
+    #nav:target {
+        display: block;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        padding-top: 110px;
+        -webkit-transition: all .5s ease;
+        -moz-transition: all .5s ease;
+        -ms-transition: all .5s ease;
+        -o-transition: all .5s ease;
+        transition: all .5s ease;
+    }
+
+    #nav:target ul {
+        width: 100%;
+        background-color: #999;
+    }
+
+    #nav:target ul li, #nav:target ul li a {
+        width: 100%;
+        text-align: left;
+        padding: 7px 0;
+    }
+
+    #nav:target .active {
+        background: #3b3b3b;
+        color: #fff;
+        -webkit-transition: all .5s ease;
+        -moz-transition: all .5s ease;
+        -ms-transition: all .5s ease;
+        -o-transition: all .5s ease;
+        transition: all .5s ease;
+    }
+
+    /* 目标状态下的导航的列表下的 a 标签的悬停样式 */
+    #nav:target li a:hover {
+        background: #3b3b3b;
+        color: #fff;
+        -webkit-transition: all .5s ease;
+        -moz-transition: all .5s ease;
+        -ms-transition: all .5s ease;
+        -o-transition: all .5s ease;
+        transition: all .5s ease;
+    }
+
+}
+
+
+
+
+
+
+
+
+
