@@ -12,12 +12,12 @@
     float: right;
 }
 
-.hide{
+.hide {
     display: none;
     transition: all .3s ease;
 }
 
-.show{
+.show {
     display: block;
     transition: all .3s ease;
 }
@@ -82,9 +82,9 @@ body {
     float: none;
 }
 
-#menu .menu{
+#menu .menu {
     width: 270px;
-    height: 1000%;/*动态设置为屏幕高度*/
+    height: 1000%; /*动态设置为屏幕高度*/
     z-index: 9999;
     position: absolute;
     top: 0;
@@ -98,12 +98,12 @@ body {
     overflow: hidden;
 }
 
-#menu .menu-top{
+#menu .menu-top {
     margin-top: 15px;
     border-bottom: 1px solid #525252;
 }
 
-#menu .menu-top a{
+#menu .menu-top a {
     display: block;
     height: 47px;
     line-height: 47px;
@@ -113,11 +113,11 @@ body {
     font-weight: 500;
 }
 
-#menu .menu-top a:hover{
+#menu .menu-top a:hover {
     color: #fff;
 }
 
-#menu .list a{
+#menu .list a {
     padding: 0 15px;
     font-size: 14px;
     font-weight: 500;
@@ -127,25 +127,25 @@ body {
     color: #fff;
 }
 
-#menu .list a:hover{
+#menu .list a:hover {
     color: #b89f7a;
 }
 
-#menu .list a span{
+#menu .list a span {
     margin-top: 20px;
     float: right;
     width: 10px;
     height: 10px;
     display: block;
-    background: url("../img/dsj_normal.svg")no-repeat center center;
-    -webkit-background-size:100%;
-    background-size:100%;
+    background: url("../img/dsj_normal.svg") no-repeat center center;
+    -webkit-background-size: 100%;
+    background-size: 100%;
 }
 
-#menu .list a:hover span{
-    background: url("../img/dsj_active.svg")no-repeat center center;
-    -webkit-background-size:100%;
-    background-size:100%;
+#menu .list a:hover span {
+    background: url("../img/dsj_active.svg") no-repeat center center;
+    -webkit-background-size: 100%;
+    background-size: 100%;
 }
 
 #logo {
@@ -437,7 +437,7 @@ body {
     margin-bottom: 36px;
     transition: left .5s ease;
     position: relative;
-    left:0;
+    left: 0;
 }
 
 #favourite .slider-img li {
@@ -481,34 +481,34 @@ body {
 }
 
 /*星巴克reserve*/
-#reserve{
+#reserve {
     width: 100%;
     background-color: #060608;
     padding: 40px 0;
 }
 
-#reserve .container{
-    width:80%;
+#reserve .container {
+    width: 80%;
     margin: 0 auto;
     height: 528px;
 }
 
-#reserve .container .img,#reserve .container .content{
+#reserve .container .img, #reserve .container .content {
     width: 50%;
     float: left;
 }
 
-#reserve .container .img img{
+#reserve .container .img img {
     width: 480px;
     height: 528px;
 }
 
-#reserve .container .content{
+#reserve .container .content {
     text-align: center;
     padding: 140px 0;
 }
 
-#reserve .container .content h3{
+#reserve .container .content h3 {
     font-weight: 900;
     font-size: 14px;
     line-height: 22px;
@@ -518,7 +518,7 @@ body {
     margin-bottom: 26px;
 }
 
-#reserve .container .content p{
+#reserve .container .content p {
     font-size: 26px;
     line-height: 40px;
     color: #707070;
@@ -531,7 +531,7 @@ body {
 
 }
 
-#reserve .container .btn a{
+#reserve .container .btn a {
     border: 2px solid #a98e67;
     padding: 17px 40px;
     color: #a98e67;
@@ -540,13 +540,13 @@ body {
     font-weight: 700;
 }
 
-#reserve .container .btn a:hover{
+#reserve .container .btn a:hover {
     background-color: #a98e67;
     color: #fff;
 }
 
 /*footer*/
-#footer{
+#footer {
     width: 100%;
     /*height: 138px;*/
     background: #292929;
@@ -556,7 +556,7 @@ body {
     line-height: 18px;
 }
 
-#footer .container{
+#footer .container {
     width: 85%;
     height: 60px;
     margin: 0 auto;
@@ -565,11 +565,11 @@ body {
     line-height: 18px;
 }
 
-#footer .container strong{
+#footer .container strong {
     display: block;
 }
 
-#container .container .wechat,#container .container .weibo{
+#container .container .wechat, #container .container .weibo {
     width: 40px;
     height: 40px;
     margin-right: 20px;
