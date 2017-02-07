@@ -19,7 +19,7 @@
                 var flag = true;
                 $('input[type=checkbox][name=items]').each(function () {
                     if (!this.checked) {
-                        flag = ;
+                        flag = false;
                     }
                 });
 
@@ -34,7 +34,7 @@
                 var str = "你选中的是：\r\n";
                 $('input[type=checkbox][name=items]:checked').each(function () {
                     str += $(this).val() + "\r\n";
-                })
+                });
                 alert(str);
             });
         })

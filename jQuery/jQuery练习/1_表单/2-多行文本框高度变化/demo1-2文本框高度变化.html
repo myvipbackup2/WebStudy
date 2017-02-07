@@ -33,7 +33,6 @@
 
         .msg textarea {
             width: 300px;
-            height: 80px;
             height: 100px;
             border: 1px solid #000;
         }
@@ -56,20 +55,20 @@
             //提示：可能出现的潜在问题，如果动画还未完成，再次点击操作按钮会出现什么样的现象？如何解决？
             var $com = $('#comment');
             $('.bigger').on('click', function () {
-                if (!$com.is(':animated')){
-                    if ($com.height()<500){
+                if (!$com.is(':animated')) {
+                    if ($com.height() < 500) {
                         $com.animate({
-                            height:$com.height()+50
-                        },400);
+                            height: $com.height() + 50
+                        }, 400);
                     }
                 }
             });
             $('.smaller').on('click', function () {
-                if (!$com.is(':animated')){
-                    if ($com.height()>50){
+                if (!$com.is(':animated')) {
+                    if ($com.height() > 50) {
                         $com.animate({
-                            height:$com.height()-50
-                        },400);
+                            height: $com.height() - 50
+                        }, 400);
                     }
                 }
             });
