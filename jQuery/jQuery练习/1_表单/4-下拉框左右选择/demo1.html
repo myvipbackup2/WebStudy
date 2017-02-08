@@ -47,13 +47,21 @@
             $('#remove_all').on('click', function () {
                 $('#select2 option').appendTo('#select1');
             });
-            //双击选项
-            $('#select1').on('dblclick', function () {
-                $("option:selected", this).appendTo('#select2'); //追加给对方
+//            //双击选项
+//            $('#select1').on('dblclick', function () {
+//                $("option:selected", this).appendTo('#select2'); //追加给对方
+//            });
+//            //双击选项
+//            $('#select2').on('dblclick', function () {
+//                $("option:selected", this).appendTo('#select1');
+//            });
+            //事件委托
+            $('#select1').on('dblclick', 'option', function () {
+                $(this).appendTo('#select2'); //追加给对方
             });
             //双击选项
-            $('#select2').on('dblclick', function () {
-                $("option:selected", this).appendTo('#select1');
+            $('#select2').on('dblclick', 'option', function () {
+                $(this).appendTo('#select1');
             });
         });
     </script>

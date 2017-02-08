@@ -10,4 +10,4 @@
 					.filter(":contains('"+( $(this).val() )+"')")
 					.show();
 	   }).keyup();
-  })
+  });
