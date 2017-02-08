@@ -10,7 +10,7 @@
     <script type="text/javascript">
 
         $(function () {
-            $('tbody input[type=checkbox]:checked').parent().parent().addClass('selected');
+//            $('tbody input[type=checkbox]:checked').parent().parent().addClass('selected');
             $('tbody > tr').on('click', function () {
                 if ($(this).hasClass('selected')) {
                     $(this).removeClass('selected').find('input').prop('checked', false);
@@ -45,7 +45,7 @@
         <td>浙江杭州</td>
     </tr>
     <tr>
-        <td><input type="checkbox" name="choice" value="" checked='checked'/></td>
+        <td><input class="selected" type="checkbox" name="choice" value="" checked='checked'/></td>
         <td>王五</td>
         <td>男</td>
         <td>湖南长沙</td>
