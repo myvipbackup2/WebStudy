@@ -225,9 +225,9 @@
         $(function () {
             var oUl = $('.list ul');
             var aDiv = $('.content .item');
+            var oBox = $('#db-groups-cate');
             var index = 0;
             var timer = null;
-            var oBox = $('#db-groups-cate');
 
             oUl.on('click', 'li', function () {
                 index = $(this).index();
@@ -240,7 +240,7 @@
                 timer = setInterval(function () {
                     index++;
                     index = index == aDiv.size() ? 0 : index;
-                    oUl.find('li').eq(index).trigger('click');
+                    oUl.children().eq(index).trigger('click');
                 }, 1000);
             }
 
