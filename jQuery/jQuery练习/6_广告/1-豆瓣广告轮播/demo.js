@@ -34,6 +34,6 @@ $(function () {
             $li.addClass("on").siblings().removeClass("on");//为当前点击的列表添加选中样式，并移除其兄弟切点样式
             $($(".content .item")[idx]).show()//显示对应当前列表索引的item
                 .siblings().hide();
-        }, 600);
+        }, 200);
     });
 });
