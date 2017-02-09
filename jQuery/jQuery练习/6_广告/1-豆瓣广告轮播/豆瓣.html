@@ -217,13 +217,43 @@
         body {
             margin: 0;
         }
+
     </STYLE>
     <script src="../../../jquery-1.12.4.js" type="text/javascript"></script>
-    <script src="demo.js" type="text/javascript"></script>
-    <SCRIPT>
+    <!--<script src="demo.js" type="text/javascript"></script>-->
+    <script>
+        $(function () {
+            var oUl = $('.list ul');
+            var aDiv = $('.content .item');
+            var index = 0;
+            var timer = null;
+            var oBox = $('#db-groups-cate');
 
+            oUl.on('click', 'li', function () {
+                index = $(this).index();
+                $(this).addClass('on').siblings().removeClass('on');
+                aDiv.eq(index).removeClass('hide').siblings().addClass('hide');
+            });
 
-    </SCRIPT>
+//            自动轮番
+            function run() {
+                timer = setInterval(function () {
+                    index++;
+                    index = index == aDiv.size() ? 0 : index;
+                    oUl.find('li').eq(index).trigger('click');
+                }, 1000);
+            }
+
+            run();
+
+            oBox.hover(function () {
+                clearInterval(timer);
+            },function () {
+                run();
+            })
+
+        });
+    </script>
 </HEAD>
 <BODY>
 <DIV id="db-groups-cate" class="cate-mod">
@@ -550,7 +580,8 @@
         </DIV>
     </DIV>
     <SPAN class="x1">&nbsp;</SPAN>
-    <SPAN class="x2">&nbsp;</SPAN></DIV>
-<DIV style="height: 30px; clear: both; font-size: 16px; margin-top: 250px; float: left;">豆瓣广告轮播效果，每2秒转换一次</DIV>
+    <SPAN class="x2">&nbsp;</SPAN>
+</DIV>
+<DIV style="height: 30px; clear: both; font-size: 16px; margin-top: 250px; float: left;">豆瓣广告轮播效果，每1秒转换一次</DIV>
 </BODY>
 </HTML>
