@@ -1,7 +1,7 @@
 /**
  * Created by lizixiang on 2017/2/14.
  */
-define(function (require,exports,module) {
+define(function (require, exports, module) {
 
     function Leaf(options) {
 
@@ -23,6 +23,6 @@ define(function (require,exports,module) {
         }, Math.random() * 200)
     };
 
-    module.exports=Leaf;
+    module.exports = Leaf;
 
 });
