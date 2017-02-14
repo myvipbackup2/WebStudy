@@ -8,8 +8,13 @@ require(["./leaf"], function (Leaf) {
 
     //实例化出来四个叶子
     for (var i = 0; i < 4; i++) {
-        var iWidth = 50+parseInt(Math.random()*51);
-        var leaf = new Leaf();
+        var iWidth = 50 + parseInt(Math.random() * 51);
+        var leaf = new Leaf({
+            width: iWidth,
+            left: parseInt(Math.random() * (winWidth - iWidth)),
+            container: oContainer
+        });
+        leaf.fall();
     }
 
 });
