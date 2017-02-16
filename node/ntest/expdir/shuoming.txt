@@ -1,0 +1,28 @@
+http://localhost/xx
+
+app.get('/xx',checkLogin);
+
+if(!req.session.user){
+	res.redirect('/login');
+}else{
+	res.redirect('/xx');
+}
+
+http://localhost/parse
+http://localhost/users/login/do/login
+
+
+1:通过npm安装Express
+
+express 4.0版本
+npm install -g express
+npm install -g express-generator
+express -e expdir
+
+
+npm install -g express@3.5.0
+express -e expdir
+
+------------------------------------
+npm install
+node ./bin/www

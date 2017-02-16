@@ -1,0 +1,31 @@
+"columns": [
+                {"data": "facility_type_id"},
+                {"data": "name"},
+                {"data": "icon"},
+                {"data": "facility_type_id"}
+            ],
+
+<div class="adv-table search-facility">
+    <form action="facility/index" method="get" class="form-inline pull-right search-form" role="form">
+        <div class="form-group">
+            <label class="sr-only" for="facilityname">设备名称</label>
+            <input type="text" class="form-control" id="t_facilityname" placeholder="设备名"  name="facilityname">
+        </div>
+        <button type="submit" class="btn btn-primary">搜索</button>
+    </form>
+</div>
+
+<?php foreach($facilitydata as $value){?>
+	<tr>
+	    <td><input type="checkbox" name="del[]" class="select_check" value="<?php echo $value->facility_type_id?>"></td>
+	    <td><?php echo $value->name?></td>
+	    <td><img src="<?php echo $value->icon?>" alt=""></td>
+	    <td><a href="facility/del_facility/<?php echo $value->facility_type_id;?>">删除</a></td>
+	</tr>
+<?php }?>
+
+<div class="pagelist">
+    <ul class="pagination pagination-lg">
+        <li><?php echo $this->pagination->create_links();?></li>
+    </ul>
+</div>
