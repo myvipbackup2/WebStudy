@@ -97,7 +97,7 @@ public function index(){
    (2)controller要从view中接受数据 
       req.body.（form表单中的那些name属性）
 
-PHP CI
+####PHP CI
 
 $name=$this->input->post('username');
 $pass=$this->input->post('password');
@@ -105,7 +105,7 @@ $pass=$this->input->post('password');
 var name=req.body.username;
 var pass=req.body.password;
 
-从控制器传递到模型的
+####从控制器传递到模型的
 
 $data=array(
 	name->$name,
@@ -123,7 +123,7 @@ $this->user_model->getName($data);
 
 $this->user_model->getName($name,$pass);
 
-PHP 连接一个数据库
+####PHP 连接一个数据库
 
 mysql_connect("localhost","root","");
 new Server(settings.host, Connection.DEFAULT_PORT, {})
