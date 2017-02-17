@@ -29,7 +29,7 @@ node_module  express ejs  require('express')
 (5)  node app.js  //app.js是Express框架的入口文件
      http://localhost:3000
 
-分析一下Express的生死流程
+###分析一下Express的生死流程
 (1) 分析app.js
 
 app.js --nodejs server的入口文件
