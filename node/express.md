@@ -59,7 +59,7 @@ var routes=require('./routes');
 
 var routes=require('./routes.js') index.js->routes.js
 
-node app.js---加载app.js  
+####node app.js---加载app.js  
 1:加载路由 通过路由找到控制器下的方法 通过方法调用前端页面
 
 app.js->JS Function index()->{
