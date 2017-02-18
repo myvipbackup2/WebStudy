@@ -141,12 +141,12 @@ PHPINFO()
 
 
 
-2：根据项目建立mongodb数据库
+####2：根据项目建立mongodb数据库
 
 xblog
 ----->users name password
 
-3：实现注册和登录功能
+####3：实现注册和登录功能
 
 
 res.writeHead()
