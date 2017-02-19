@@ -2,7 +2,7 @@
  * Created by lizixiang on 2017/2/19.
  */
 
-// define(['./isArr'], function (isArr) {
+// define(['./isArr'], function (isArr) {  //AMD写法
 //
 //     function sort(arr) {
 //         if (!isArr(arr)) {
@@ -20,7 +20,7 @@
 
 define(function (require) {
 
-    var isArr = require('./isArr');
+    var isArr = require('./isArr'); //CMD写法
 
     function sort(arr) {
         if (!isArr(arr)) {
