@@ -5,16 +5,28 @@
 define(['jquery'], function ($) {
 
     return {
-        open: function () {
+        open: function (options) {
+
+            var setting = {
+                width: 400,
+                height: 300,
+                title: '这是标题'
+            };
+            $.extend(setting, options);
 
             var that = this;
             this.$container = $('<div class="modal-container"></div>');
             var $mask = $('<div class="modal-mask"></div>').on('click', function () {
                 that.close();
             });
-            var $main = $('<div class="modal-main"></div>');
+            var $main = $('<div class="modal-main"></div>').css({
+                width: setting.width,
+                height: setting.height,
+                marginLeft: -setting.width / 2,
+                marginTop: -setting.height / 2
+            });
             var $modalTitle = $('<div class="modal-title clearfix"></div>');
-            var $title = $('<span class="fl">这是标题</span>');
+            var $title = $('<span class="fl">' + setting.title + '</span>');
             var $close = $('<span class="fr">[X]</span>').on('click', function () {
                 that.close();
             });
