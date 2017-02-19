@@ -10,7 +10,7 @@ define(['jquery'], function ($) {
             var setting = {
                 width: 400,
                 height: 300,
-                title: '这是标题'
+                title: '初始化中...'
             };
             $.extend(setting, options);
 
@@ -30,7 +30,7 @@ define(['jquery'], function ($) {
             var $close = $('<span class="fr">[X]</span>').on('click', function () {
                 that.close();
             });
-            var $content = $('<div class="modal-content"></div>');
+            var $content = $('<div class="modal-content"></div>').load(setting.url);
 
             $modalTitle.append($title).append($close);
             $main.append($modalTitle).append($content);

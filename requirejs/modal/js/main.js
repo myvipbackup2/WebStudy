@@ -6,9 +6,10 @@ require(['jquery', 'modal'], function ($, Modal) {
 
     $('#btn').on('click', function () {
         Modal.open({
-            width: 800,
-            height: 800,
-            title:'11111'
+            width: 500,
+            height: 400,
+            title: '欢迎登录',
+            url: 'login.html'
         });
     });
 
