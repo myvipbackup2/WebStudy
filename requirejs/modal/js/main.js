@@ -8,10 +8,6 @@ require(['jquery', 'modal'], function ($, Modal) {
         Modal.open();
     });
 
-    $('.modal-mask').on('click',function () {
-        Modal.close();
-    });
-
 
 
 });
