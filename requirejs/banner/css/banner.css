@@ -1,0 +1,90 @@
+.banner-container ul, ol {
+    list-style: none;
+}
+
+.banner-container a {
+    text-decoration: none;
+}
+
+.banner-container {
+    width: 1226px;
+    height: 460px;
+    margin: 20px auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.banner-banner {
+    position: relative;
+    left: 0;
+    transition: .5s;
+    /*left默认是auto可能取不到*/
+    /*width: 6130px;*/
+    /*宽度js动态生成*/
+}
+
+.banner-banner img {
+    width: 1226px;
+    height: 460px;
+    float: left;
+}
+
+.banner-btn {
+    overflow: hidden;
+    position: absolute;
+    top: 50%;
+    margin-top: -35px;
+    width: 100%;
+}
+
+.banner-btn a {
+    width: 41px;
+    height: 69px;
+}
+
+.banner-prev {
+    float: left;
+    background: url("../img/btn.png") no-repeat -84px;
+}
+
+.banner-prev:hover {
+    background: url("../img/btn.png") no-repeat 0;
+}
+
+.banner-next {
+    float: right;
+    background: url("../img/btn.png") no-repeat -125px;
+}
+
+.banner-next:hover {
+    float: right;
+    background: url("../img/btn.png") no-repeat -41px;
+}
+
+.banner-tab {
+    position: absolute;
+    bottom: 20px;
+    right: 40px;
+}
+
+.banner-tab li {
+    float: left;
+    width: 20px;
+    height: 20px;
+    background-color: #000;
+    color: #fff;
+    margin-left: 5px;
+    text-align: center;
+    line-height: 20px;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+.banner-tab li.banner-selected {
+    background-color: orangered;
+}
+
+.banner-tab li:hover {
+    background-color: orangered;
+    transition: 0.3s;
+}

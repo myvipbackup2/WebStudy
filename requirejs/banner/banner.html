@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>轮番图3-滑动切换</title>
+    <link rel="stylesheet" href="css/banner.css">
+</head>
+<body>
+<button>增加一个banner</button>
+<div class="banner-container">
+    <div class="banner-banner">
+        <img src="img/1.jpg" alt="">
+        <img src="img/2.jpg" alt="">
+        <img src="img/3.jpg" alt="">
+        <img src="img/4.jpg" alt="">
+        <img src="img/5.jpg" alt="">
+    </div>
+    <div class="banner-btn">
+        <a href="javascript:;" class="banner-prev"></a>
+        <a href="javascript:;" class="banner-next"></a>
+        <!--<a href="###" class="prev"></a>-->
+        <!--<a href="###" class="next"></a>-->
+    </div>
+    <ul class="banner-tab">
+        <li class="banner-selected">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+</div>
+
+<script>
+    window.onload = function () {
+        var oTab = document.getElementById('tab');
+        var aLi = oTab.children;
+        var oBanner = document.getElementById('banner');
+        var aImg = oBanner.children;
+        var oPrev = document.getElementById('prev');
+        var oNext = document.getElementById('next');
+        var index = 0; //代表当前正在显示的图片的索引
+        var timer = null;
+
+        oBanner.style.width = aImg[0].offsetWidth * aImg.length + 'px';  //初始化宽度
+
+        for (var i = 0; i < aLi.length; i++) {
+            aLi[i].index = i;
+            aLi[i].onmouseover = function () {
+                index = this.index;
+                changeImg(index);
+            };
+            aLi[i].onselectstart = function () {
+                return false;
+            };
+        }
+
+        function changeImg(index) {
+            for (var i = 0; i < aLi.length; i++) {
+                aLi[i].className = '';
+            }
+            aLi[index].className = 'selected';
+            oBanner.style.left = -index * aImg[0].offsetWidth + "px"; //用css3的transition实现过度
+//            animate(oBanner, {left: -index * aImg[0].offsetWidth});
+        }
+
+        oPrev.onclick = function () {
+            if (index == 0) {
+                index = aImg.length - 1;
+            } else {
+                index--;
+            }
+            changeImg(index);
+            auto();
+        };
+
+        oNext.onclick = function () {
+            if (index == aLi.length - 1) {
+                index = 0;
+            } else {
+                index++;
+            }
+            changeImg(index);
+            auto();
+        };
+
+        function run() { //自动轮番
+            timer = setInterval(function () {
+                oNext.onclick();
+            }, 2500)
+        }
+
+        function kill() { //清除定时器
+            clearInterval(timer);
+        }
+
+        function auto() { //先清除定时器再轮番
+            kill();
+            run();
+        }
+
+        auto();
+
+        oTab.onmouseover = function () {
+            kill();
+        };
+
+        oTab.onmouseout = function () {
+            run();
+        };
+    }
+</script>
+</body>
+</html>
