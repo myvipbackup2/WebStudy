@@ -4,6 +4,11 @@
 
 require(['jquery','Banner'], function ($,Banner) {
 
+    var oBtn = $('#btn');
 
+    oBtn.on('click',function () {
+        var banner = new Banner();
+        banner.init();
+    })
 
 });
