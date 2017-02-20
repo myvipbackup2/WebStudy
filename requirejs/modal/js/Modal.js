@@ -4,7 +4,7 @@
 
 define(['jquery'], function ($) {
 
-    function Modal() {}
+    function Modal() {}  //构造方法
 
     Modal.prototype.open = function (options) {
 
@@ -13,7 +13,7 @@ define(['jquery'], function ($) {
             height: 300,
             title: '初始化中...'
         };
-        $.extend(setting, options);
+        $.extend(setting, options);  //合并两个对象的方法
 
         var that = this;
         this.$container = $('<div class="modal-container"></div>');
