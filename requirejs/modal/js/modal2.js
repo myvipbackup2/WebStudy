@@ -35,12 +35,15 @@ define(['jquery'], function ($) {
             $modalTitle.append($title).append($close);
             $main.append($modalTitle).append($content);
             this.$container.append($mask).append($main);
-            $(document.body).append(this.$container);
+            $(document.body).append(this.$container.hide(0).fadeIn(600));
 
         },
 
         close: function () {
-            this.$container.remove();
+            var that = this;
+            this.$container.fadeOut(600,function () {
+                that.$container.remove();
+            });
         }
 
 
