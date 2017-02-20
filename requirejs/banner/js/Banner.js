@@ -28,14 +28,16 @@ define(['jquery'], function ($) {
             oBanner.append(oImg);
             oTab.append(oLi);
         }
+
+        //在
         oTab.children().eq(0).addClass('banner-selected');
         oBtn.append(oPrev).append(oNext);  //把前后插入按钮容器
         oContainer.append(oBanner).append(oBtn).append(oTab); //把图片，按钮，tab都插入容器
         $(setting.target).append(oContainer);
 
+
         var aLi = oTab.children();
         var aImg = oBanner.children();
-
         this.index = 0; //代表当前正在显示的图片的索引
         this.timer = null;
         var _this = this;
