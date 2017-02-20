@@ -80,6 +80,11 @@
     border-radius: 2px;
 }
 
+.banner-tab li.circle {
+    border-radius: 50%;
+    background-color: #fff;
+}
+
 .banner-tab li.banner-selected {
     background-color: orangered;
 }

@@ -10,9 +10,10 @@ define(['jquery'], function ($) {
     Banner.prototype.init = function (options) {
 
         var setting = {  //默认参数
-            imgSrc: ['img/1.jpg', 'img/2.jpg', 'img/3.jpg', 'img/4.jpg'],
             target: document.body,
+            btnStyle:'square'  //square circle
         };
+
         $.extend(setting, options);
 
         // HTML元素
@@ -29,6 +30,10 @@ define(['jquery'], function ($) {
             oImg.src = setting.imgSrc[i];
             oBanner.append(oImg);
             oTab.append('<li>' + (i + 1) + '</li>');
+        }
+
+        if (setting.btnStyle == 'circle'){  //判断btn样式正方形还是圆形
+            oTab.children().addClass('circle').html('');
         }
 
         //在内存中做插入操作
