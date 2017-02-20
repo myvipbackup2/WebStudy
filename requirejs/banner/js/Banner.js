@@ -5,40 +5,43 @@
 define(['jquery'], function ($) {
 
     function Banner() {
-
     }
 
     Banner.prototype.init = function (options) {
-        var setting = {
-            imgSrc: ['1.jpg', '2.jpg', '3.jpg', '4.jpg'],
+
+        var setting = {  //默认参数
+            imgSrc: ['img/1.jpg', 'img/2.jpg', 'img/3.jpg', 'img/4.jpg'],
             target: document.body,
         };
-        var oContainer = $('<div class="banner-container"></div>');
-        var oBanner = $('<div class="banner-banner"></div>');
-        var oBtn = $('<div class="banner-btn"></div>');
-        var oPrev = $('<a href="javascript:;" class="banner-prev"></a>');
-        var oNext = $('<a href="javascript:;" class="banner-next"></a>');
-        var oTab = $('<ul class="banner-tab"></ul>');
+        $.extend(setting, options);
 
-        //插入图片和数字
+        // HTML元素
+        var oContainer = $('<div class="banner-container"></div>'),
+            oBanner = $('<div class="banner-banner"></div>'),
+            oBtn = $('<div class="banner-btn"></div>'),
+            oPrev = $('<a href="javascript:;" class="banner-prev"></a>'),
+            oNext = $('<a href="javascript:;" class="banner-next"></a>'),
+            oTab = $('<ul class="banner-tab"></ul>');
+
+        //插入图片和数字列表
         for (var i = 0; i < setting.imgSrc.length; i++) {
             var oImg = new Image();
-            var oLi = $('<li>' + (i + 1) + '</li>');
-            oImg.src = 'img/' + setting.imgSrc[i];
+            oImg.src = setting.imgSrc[i];
             oBanner.append(oImg);
-            oTab.append(oLi);
+            oTab.append('<li>' + (i + 1) + '</li>');
         }
 
-        //在
+        //在内存中做插入操作
         oTab.children().eq(0).addClass('banner-selected');
         oBtn.append(oPrev).append(oNext);  //把前后插入按钮容器
         oContainer.append(oBanner).append(oBtn).append(oTab); //把图片，按钮，tab都插入容器
+        //在DOM中插入
         $(setting.target).append(oContainer);
 
-
+        //轮番代码
         var aLi = oTab.children();
         var aImg = oBanner.children();
-        this.index = 0; //代表当前正在显示的图片的索引
+        this.index = 0; //代表当前正在显示的图片的全局索引
         this.timer = null;
         var _this = this;
 
