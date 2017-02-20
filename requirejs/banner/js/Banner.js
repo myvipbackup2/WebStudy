@@ -11,7 +11,7 @@ define(['jquery'], function ($) {
 
         var setting = {  //默认参数
             target: document.body,
-            btnStyle:'square'  //square circle
+            btnStyle: 'square'  //square circle
         };
 
         $.extend(setting, options);
@@ -32,7 +32,7 @@ define(['jquery'], function ($) {
             oTab.append('<li>' + (i + 1) + '</li>');
         }
 
-        if (setting.btnStyle == 'circle'){  //判断btn样式正方形还是圆形
+        if (setting.btnStyle == 'circle') {  //判断btn样式正方形还是圆形
             oTab.children().addClass('circle').html('');
         }
 
@@ -46,9 +46,8 @@ define(['jquery'], function ($) {
         //轮番代码
         var aLi = oTab.children();
         var aImg = oBanner.children();
-        this.index = 0; //代表当前正在显示的图片的全局索引
-        this.timer = null;
-        var _this = this;
+        var index = 0; //代表当前正在显示的图片的全局索引
+        var timer = null;
 
         oBanner.css({
             width: aImg[0].offsetWidth * aImg.length + 'px' //初始化宽度
@@ -56,8 +55,8 @@ define(['jquery'], function ($) {
 
         for (var i = 0; i < aLi.length; i++) {
             aLi.eq(i).hover(function () {
-                _this.index = $(this).index();
-                changeImg(_this.index);
+                index = $(this).index();
+                changeImg(index);
             });
             aLi[i].onselectstart = function () {
                 return false;
@@ -72,25 +71,25 @@ define(['jquery'], function ($) {
         }
 
         oPrev.on('click', function () {
-            if (_this.index == 0) {
-                _this.index = aImg.length - 1;
+            if (index == 0) {
+                index = aImg.length - 1;
             } else {
-                _this.index--;
+                index--;
             }
-            changeImg(_this.index);
+            changeImg(index);
         });
 
         oNext.on('click', function () {
-            if (_this.index == aLi.length - 1) {
-                _this.index = 0;
+            if (index == aLi.length - 1) {
+                index = 0;
             } else {
-                _this.index++;
+                index++;
             }
-            changeImg(_this.index);
+            changeImg(index);
         });
 
         function run() { //自动轮番
-            _this.timer = setInterval(function () {
+            timer = setInterval(function () {
                 oNext.trigger('click');
             }, 2500)
         }
@@ -98,7 +97,7 @@ define(['jquery'], function ($) {
         run();
 
         oContainer.hover(function () {
-            clearInterval(_this.timer);
+            clearInterval(timer);
         }, function () {
             run();
         });
