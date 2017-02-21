@@ -218,6 +218,10 @@ body {
     background-color: #fff;
 }
 
+#clients .wrap {
+    position: relative;
+}
+
 #clients .title {
     line-height: 70px;
     color: #626262;
@@ -226,19 +230,21 @@ body {
 #clients .clients {
     height: 84px;
     position: relative;
+    width: 920px;
+    margin: 0 auto;
 }
 
-#clients .clients .btn a {
+#clients .wrap .btn a {
     width: 24px;
     height: 40px;
     display: block;
     position: absolute;
-    top: 50%;
-    margin-top: -20px;
+    top: 90px;
 }
 
 #clients-prev {
     background: url("../img/clients-arrow-left.png") no-repeat center;
+    left: 0;
 }
 
 #clients-next {
@@ -258,8 +264,8 @@ body {
     transition: all .5s ease;
 }
 
-#clients .clients .links.hide{
-    left:950px;
+#clients .clients .links.hide {
+    left: 950px;
 }
 
 #clients .clients .links .img {
