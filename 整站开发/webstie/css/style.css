@@ -1,0 +1,97 @@
+/*common style*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.clearfix {
+    overflow: hidden;
+    _zoom: 1;
+}
+
+.wrap {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+img {
+    vertical-align: middle;
+    border: 0
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+ul,ol{
+    list-style:none;
+}
+
+body {
+    background-color: #ffffff;
+    font-family: AvenirRoman, HelveticaNeue-Light, Helvetica Neue, arial, Hiragino Sans GB, 冬青黑体, Microsoft YaHei New, Microsoft Yahei, 微软雅黑, 宋体, SimSun, STXihei, 华文细黑, sans-serif;
+    font-weight: 400;
+}
+
+/*nav*/
+#nav{
+    height: 120px;
+    background-color: #fff;
+    line-height: 120px;
+}
+
+#nav .logo{
+    width: 189px;
+    height: 47px;
+}
+
+#nav .ul{
+    margin-left: 100px;
+}
+
+#nav .ul li{
+    float: left;
+}
+
+#nav .ul li span{
+    padding: 0 25px;
+    color: #626262;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+#nav .ul li span:hover{
+    color: #00aeff;
+}
+
+#nav .ul li.sel span{
+    color: #00aeff;
+}
+
+#nav .ul li .line{
+    width: 1px;
+    height: 14px;
+    background-color: #6b6b6b;
+    margin-top: 53px;
+}
+
+#nav .search{
+    width: 130px;
+    height: 30px;
+    margin-top: 45px;
+    background-color: #f1f3f6;
+}
+
+
+
+
