@@ -271,3 +271,63 @@ body {
     background-color: #31333e;
 }
 
+#footer .wrap {
+    height: 86px;
+    padding: 45px 0;
+}
+
+#footer .footer {
+    width: 668px;
+    height: 100%;
+    position: relative;
+}
+
+#footer .ul li {
+    float: left;
+}
+
+#footer .ul li span {
+    padding: 0 16px;
+    color: #e2e7ed;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+#footer .ul li:first-child span {
+    padding-left: 0;
+}
+
+#footer .ul li span:hover {
+    color: #00aeff;
+}
+
+#footer .ul li.sel span {
+    color: #00aeff;
+}
+
+#footer .ul li .line {
+    width: 2px;
+    height: 13px;
+    margin-top: 3px;
+    background-color: #aaaeb4;
+}
+
+#footer .copy-right {
+    line-height: 30px;
+    color: #e2e7ed;
+    font-size: 15px;
+}
+
+#footer .design {
+    color: #e2e7ed;
+    font-size: 12px;
+    position: absolute;
+    bottom: 0;
+}
+
+#footer .icon{
+    width: 332px;
+    height: 37px;
+    background-color: red;
+}
