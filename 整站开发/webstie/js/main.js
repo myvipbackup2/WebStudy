@@ -39,16 +39,16 @@ $(function () {
 
     $banner.hover(function () {
         clearInterval(timer);
-    },function () {
+    }, function () {
         run();
     });
 
-    $clientsPrev.on('click',function () {
+    $clientsPrev.on('click', function () {
         $clients.eq(0).toggleClass('hide');
         $clients.eq(1).toggleClass('hide');
     });
 
-    $clientsNext.on('click',function () {
+    $clientsNext.on('click', function () {
         $clients.eq(0).toggleClass('hide');
         $clients.eq(1).toggleClass('hide');
     });
