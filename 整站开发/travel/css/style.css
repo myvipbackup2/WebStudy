@@ -19,6 +19,14 @@
     margin: 0 auto;
 }
 
+.tpi {
+    background: url(../img/icons-trip.png) no-repeat;
+}
+
+a:hover, a > *:hover {
+    text-decoration: none;
+}
+
 body {
     font-family: AvenirRoman, HelveticaNeue-Light, Helvetica Neue, arial, Hiragino Sans GB, 冬青黑体, Microsoft YaHei New, Microsoft Yahei, 微软雅黑, 宋体, SimSun, STXihei, 华文细黑, sans-serif;
     font-weight: 400;
@@ -455,6 +463,193 @@ body {
 }
 
 /*行程亮点*/
+.trip-lightBox {
+    background: #6ad3a3;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    padding: 25px 0;
+    margin-bottom: 20px;
+}
 
+.trip-lightBox .lightHd {
+    float: left;
+    width: 170px;
+    text-align: center;
+    color: #166759;
+    padding-top: 8px;
+}
 
+.trip-lightBox .lightHd span {
+    font-size: 24px;
+    display: block;
+}
 
+.trip-lightBox .lightHd .ilight {
+    display: inline-block;
+    width: 44px;
+    height: 44px;
+    background-position: -67px -94px;
+}
+
+.trip-lightBox .lightBd {
+    float: left;
+    padding-top: 8px;
+}
+
+.trip-lightBox .lightlist {
+    display: block;
+    overflow: hidden;
+}
+
+.trip-lightBox .lightlist li {
+    float: left;
+    display: block;
+    width: 250px;
+    min-height: 80px;
+    padding: 0 40px;
+    color: #FFF;
+    position: relative;
+    margin-right: 1px;
+}
+
+.trip-lightBox .lightlist li p {
+    font-size: 14px;
+    line-height: 24px;
+    padding-left: 60px;
+}
+
+.trip-lightBox .lightlist li .ihight {
+    float: left;
+    display: inline-block;
+    width: 46px;
+    height: 46px;
+    background: url("../img/icons-trip.png") -4px -92px;
+}
+
+.trip-lightBox .lightlist li:after {
+    content: '';
+    width: 1px;
+    height: 80px;
+    font-size: 0;
+    background: #57b288;
+    display: block;
+    position: absolute;
+    right: -1px;
+    top: 0;
+}
+
+.trip-lightBox .lightlist li:last-child {
+    margin-right: 0;
+}
+
+/*特色景点*/
+.trip-itemHd {
+    padding-left: 10px;
+    margin-bottom: 20px;
+}
+
+.trip-itemHd h4 {
+    font-size: 24px;
+    color: #4e4e4e;
+    margin-right: 10px;
+}
+
+.trip-itemHd .desc {
+    font-size: 16px;
+    color: #888888;
+    margin-left: 10px;
+}
+
+.trip-tsList {
+    width: 1180px;
+    overflow: hidden;
+}
+
+.trip-tsList ul {
+    overflow: visible;
+    width: 1210px;
+}
+
+.trip-tsList ul li {
+    float: left;
+    display: block;
+    width: 276px;
+    margin-right: 25px;
+    margin-bottom: 25px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+}
+
+.trip-tsList ul li a {
+    display: block;
+    color: #FFF;
+}
+
+.trip-tsList ul li a > * {
+    color: #FFF;
+}
+
+.trip-tsList .ts-img {
+    width: 276px;
+    height: 184px;
+    overflow: hidden;
+}
+
+.trip-tsList .ts-info {
+    background: #6ad3a3;
+    height: 120px;
+    padding: 12px 15px;
+}
+
+.trip-tsList .ts-spot {
+    font-size: 18px;
+    text-align: center;
+    line-height: 30px;
+    margin-bottom: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.trip-tsList .ts-city {
+    border-top: 1px solid #a4e8cc;
+    height: 20px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.trip-tsList .ts-city span {
+    display: inline-block;
+    background: #6ad3a3;
+    color: #d8f2e5;
+    font-size: 12px;
+    padding: 0 10px;
+    position: relative;
+    top: -11px;
+}
+
+.trip-tsList .ts-city .ipin {
+    display: inline-block;
+    width: 11px;
+    height: 14px;
+    background-position: -41px -11px;
+    margin-right: 3px;
+    position: relative;
+    top: 2px;
+}
+
+.trip-tsList .ts-desc {
+    font-size: 12px;
+    line-height: 20px;
+    height: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ts-more {
+    text-align: center;
+}
