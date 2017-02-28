@@ -1,0 +1,258 @@
+@charset "UTF-8";
+
+/*通用*/
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.clearfix {
+    overflow: hidden;
+    _zoom: 1;
+}
+
+.wrapper {
+    width: 1180px;
+    margin: 0 auto;
+}
+
+body {
+    font-family: AvenirRoman, HelveticaNeue-Light, Helvetica Neue, arial, Hiragino Sans GB, 冬青黑体, Microsoft YaHei New, Microsoft Yahei, 微软雅黑, 宋体, SimSun, STXihei, 华文细黑, sans-serif;
+    font-weight: 400;
+    background: #f2f2f2;
+    min-width: 1180px;
+}
+
+/*header*/
+#header {
+    padding-top: 4px;
+    background: url(../img/header-line.png) top left repeat-x #fff;
+}
+
+#header .wrapper {
+    height: 64px;
+    line-height: 64px;
+    background-color: #fff;
+}
+
+#header .logo {
+    height: 64px;
+    line-height: 64px;
+    width: 160px;
+}
+
+#header .logo img {
+    margin-top: 7px;
+}
+
+#header .nav {
+    margin-left: 30px;
+}
+
+#header .nav li {
+    float: left;
+    display: inline-block;
+    position: relative;
+    z-index: 110;
+    padding: 0 14px;
+}
+
+#header .nav li a {
+    display: inline-block;
+    height: 60px;
+    padding: 0 5px;
+    border-bottom: 4px solid transparent;
+    _border-color: white;
+    _filter: chroma(color=white);
+    font: 16px/60px "microsoft yahei";
+    color: #000;
+    text-align: center;
+    text-decoration: none;
+}
+
+#header .nav li a:hover, #header .nav li.active a {
+    color: #71b32b;
+}
+
+#header .nav-right {
+    height: 64px;
+    line-height: 64px;
+}
+
+#header .nav-right div {
+    margin-top: 19px;
+    cursor: pointer;
+}
+
+#header .nav-right a {
+    color: #333;
+    text-decoration: none;
+}
+
+#header .nav-right a:hover {
+    color: #71b32b;
+}
+
+#header .nav-right .order {
+    padding-left: 30px;
+    font: 14px/26px "microsoft yahei";
+    background: url("../img/header_v3_icon.png") 0 0;
+}
+
+#header .nav-right .chat {
+    margin-left: 18px;
+    display: inline-block;
+    position: relative;
+    padding-left: 26px;
+    margin-right: 5px;
+    height: 26px;
+    cursor: pointer;
+    background: url(../img/icon-top-chat.png) left center no-repeat;
+}
+
+#header .nav-right .tel {
+    margin-left: 18px;
+    display: inline-block;
+    background: url("../img/header_v3_icon.png") 0 -40px;
+    padding-left: 30px;
+    height: 26px;
+    font: 16px/28px Arial, Helvetica, sans-serif;
+}
+
+#header .nav-right .star {
+    display: inline-block;
+    background: url(../img/header_v3_icon.png) -32px -80px no-repeat;
+    padding-left: 30px;
+    height: 26px;
+    font: 14px/26px "microsoft yahei";
+    margin-left: 18px;
+}
+
+/*banner*/
+#banner {
+    background: url(../img/trip-banner.jpg) center center no-repeat;
+    height: 250px;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+#banner .crumbs-bar {
+    color: #8f8a96;
+    font-size: 12px;
+    padding: 15px;
+    margin: 0 0 15px
+}
+
+#banner .crumbs-bar a {
+    color: #8f8a96;
+    text-decoration: none;
+    -webkit-transition: background-color .2s ease, border .2s ease, color .2s ease, opacity .2s ease-in-out, outline .2s ease;
+    -moz-transition: background-color .2s ease, border .2s ease, color .2s ease, opacity .2s ease-in-out, outline .2s ease;
+    -ms-transition: background-color .2s ease, border .2s ease, color .2s ease, opacity .2s ease-in-out, outline .2s ease;
+    -o-transition: background-color .2s ease, border .2s ease, color .2s ease, opacity .2s ease-in-out, outline .2s ease;
+    transition: background-color .2s ease, border .2s ease, color .2s ease, opacity .2s ease-in-out, outline .2s ease;
+}
+
+#banner .crumbs-bar a:hover {
+    color: #444;
+}
+
+#banner .trip-title {
+    width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 30px;
+}
+
+#banner .trip-title h1 {
+    color: #FFF;
+    font-size: 30px;
+    line-height: 38px;
+    margin-bottom: 5px;
+}
+
+#banner .trip-title p {
+    color: #ccc;
+    font-size: 16px;
+    line-height: 24px;
+    height: 24px;
+    width: 800px;
+    margin: 0 auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#banner .trip-title .tpi {
+    display: inline-block;
+    width: 11px;
+    height: 14px;
+    margin-right: 5px;
+    position: relative;
+    top: 1px;
+    background: url(../img/icons-trip.png) -41px -11px;
+}
+
+/*navBox*/
+#navBox {
+    background: #FFF;
+    border-bottom: 4px solid #eaeaea;
+}
+
+#navBox .wrapper {
+    height: 70px;
+    position: relative;
+}
+
+#navBox .trip-nav li {
+    display: block;
+    float: left;
+    width: 105px;
+    height: 100%;
+    line-height: 70px;
+    text-align: center;
+    position: relative;
+    margin-right: 1px;
+}
+
+#navBox .trip-nav li a {
+    display: inline-block;
+    height: 70px;
+    font-size: 16px;
+    color: #999;
+    text-decoration: none;
+}
+
+#navBox .trip-nav li a:hover, #navBox .trip-nav li a.active {
+    color: #3eb166;
+}
+
+#navBox .trip-action {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding-top: 10px;
+    margin-right: 5px;
+}
+
+#navBox .trip-action .btn-consultant {
+    display: block;
+    width: 140px;
+    height: 50px;
+    line-height: 50px;
+    background: #ffa841;
+    color: #FFF;
+    text-align: center;
+    font-size: 16px;
+    position: relative;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+#navBox .trip-action .btn-consultant:hover {
+    background: #fe9820;
+}
+
