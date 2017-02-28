@@ -53,7 +53,7 @@
     <div class="wrapper">
 
         <ul class="trip-nav clearfix">
-            <li><a href="#travel" class="active">旅行信息</a></li>
+            <li class="active"><a href="#travel">旅行信息</a></li>
             <li><a href="#popular">特色信息</a></li>
             <li><a href="#">行程介绍</a></li>
             <li><a href="#">交通信息</a></li>
@@ -72,52 +72,77 @@
 
 <div id="slider">
 
-    <div class="slider-box clearfix fl">
+    <div class="wrapper">
+        <div class="slider-box clearfix fl">
 
-        <ul class="big-img">
-            <li><a href="#"><img src="img/banner/01.jpg" alt=""></a></li>
-            <li><a href="#"><img src="img/banner/02.jpg" alt=""></a></li>
-            <li><a href="#"><img src="img/banner/03.jpg" alt=""></a></li>
-            <li><a href="#"><img src="img/banner/04.jpg" alt=""></a></li>
-            <li><a href="#"><img src="img/banner/05.jpg" alt=""></a></li>
-            <li><a href="#"><img src="img/banner/06.jpg" alt=""></a></li>
-            <li><a href="#"><img src="img/banner/07.jpg" alt=""></a></li>
-            <li><a href="#"><img src="img/banner/08.jpg" alt=""></a></li>
-            <li><a href="#"><img src="img/banner/09.jpg" alt=""></a></li>
-            <li><a href="#"><img src="img/banner/10.jpg" alt=""></a></li>
-            <li><a href="#"><img src="img/banner/11.jpg" alt=""></a></li>
-            <li><a href="#"><img src="img/banner/12.jpg" alt=""></a></li>
-            <li><a href="#"><img src="img/banner/13.jpg" alt=""></a></li>
-            <li><a href="#"><img src="img/banner/14.jpg" alt=""></a></li>
-        </ul>
-        <div class="slider">
-            <div id="btn">
-                <a id="prev" href="javascript:;"></a>
-                <a id="next" href="javascript:;"></a>
+            <ul class="big-img">
+                <li><img src="img/banner/01.jpg" alt=""></li>
+                <li><img src="img/banner/02.jpg" alt=""></li>
+                <li><img src="img/banner/03.jpg" alt=""></li>
+                <li><img src="img/banner/04.jpg" alt=""></li>
+                <li><img src="img/banner/05.jpg" alt=""></li>
+                <li><img src="img/banner/06.jpg" alt=""></li>
+                <li><img src="img/banner/07.jpg" alt=""></li>
+                <li><img src="img/banner/08.jpg" alt=""></li>
+            </ul>
+            <div class="slider">
+                <div class="btn">
+                    <a id="prev" href="javascript:;"></a>
+                    <a id="next" href="javascript:;"></a>
+                </div>
+                <div class="slider-img">
+                    <ul class="small-img">
+                        <li class="selected"><img src="img/banner/01.jpg" alt=""></li>
+                        <li><img src="img/banner/02.jpg" alt=""></li>
+                        <li><img src="img/banner/03.jpg" alt=""></li>
+                        <li><img src="img/banner/04.jpg" alt=""></li>
+                        <li><img src="img/banner/05.jpg" alt=""></li>
+                        <li><img src="img/banner/06.jpg" alt=""></li>
+                        <li><img src="img/banner/07.jpg" alt=""></li>
+                        <li><img src="img/banner/08.jpg" alt=""></li>
+                    </ul>
+                </div>
             </div>
-            <div id="slider-img">
-                <ul id="small-img">
-                    <li><a href="#"><img class="selected" src="img/banner/01.jpg" alt=""></a></li>
-                    <li><a href="#"><img src="img/banner/02.jpg" alt=""></a></li>
-                    <li><a href="#"><img src="img/banner/03.jpg" alt=""></a></li>
-                    <li><a href="#"><img src="img/banner/04.jpg" alt=""></a></li>
-                    <li><a href="#"><img src="img/banner/05.jpg" alt=""></a></li>
-                    <li><a href="#"><img src="img/banner/06.jpg" alt=""></a></li>
-                    <li><a href="#"><img src="img/banner/07.jpg" alt=""></a></li>
-                    <li><a href="#"><img src="img/banner/08.jpg" alt=""></a></li>
-                    <li><a href="#"><img src="img/banner/09.jpg" alt=""></a></li>
-                    <li><a href="#"><img src="img/banner/10.jpg" alt=""></a></li>
-                    <li><a href="#"><img src="img/banner/11.jpg" alt=""></a></li>
-                    <li><a href="#"><img src="img/banner/12.jpg" alt=""></a></li>
-                    <li><a href="#"><img src="img/banner/13.jpg" alt=""></a></li>
-                    <li><a href="#"><img src="img/banner/14.jpg" alt=""></a></li>
-                </ul>
-            </div>
+
         </div>
 
+        <div class="trip-msgInfo fr">
+            <div class="msg-common">
+                <dl class="msgItem clearfix m-dayNum">
+                    <dt>行程天数</dt>
+                    <dd>6天</dd>
+                </dl>
+                <dl class="msgItem clearfix m-dest">
+                    <dt>目的地</dt>
+                    <dd>东京 横滨 箱根 静冈 山梨县 神奈川县 镰仓</dd>
+                </dl>
+                <dl class="msgItem clearfix m-price" style="display:none">
+                    <dt>参考报价</dt>
+                    <dd>
+                        <dfn>6999</dfn>-<dfn>9999</dfn>元/人
+                    </dd>
+                </dl>
+            </div>
+            <div class="msg-states clearfix">
+                <div class="states">
+                    <p>出发地</p>
+                    <p class="txt">北京</p>
+                </div>
+            </div>
+            <div class="trip-consult clearfix">
+                <div class="gw-img"><img src="img/guwen-default.png" height="80" width="80" alt=""></div>
+                <div class="gw-inf">
+                    <p class="gw-name">旅行顾问：陈大发</p>
+                    <p><a href="" class="btn-consult">立即咨询TA &gt;&gt;</a></p>
+                </div>
+            </div>
+        </div>
     </div>
 
 </div>
 
+
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
