@@ -256,3 +256,33 @@ body {
     background: #fe9820;
 }
 
+/*轮番图*/
+#slider {
+    background: #FFF;
+    padding: 24px 30px;
+    margin-bottom: 20px;
+    height: 400px;
+}
+
+#slider .slider-box {
+    width: 600px;
+    height: 400px;
+    position: relative;
+}
+
+#slider .slider-box .big-img li {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#slider .slider-box .big-img img {
+    width: 600px;
+    height: 400px;
+}
+
+#slider .slider-box .big-img a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
