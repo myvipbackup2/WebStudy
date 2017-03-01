@@ -12,6 +12,7 @@ $(function () {
     });
 
     // 轮番图
+    var $container = $('#slider .slider-box');
     var $aBigImg = $('#slider .big-img li');
     var $aSmallImg = $('#slider .small-img li');
     var $Ul = $('#slider .small-img');
@@ -34,9 +35,11 @@ $(function () {
 
     function slide() {  //滑动slider
         if (bFlag) {
-            changeImg(4);
+            index = 4;
+            changeImg(index);
         } else {
-            changeImg(0);
+            index = 0;
+            changeImg(index);
         }
         bFlag = !bFlag;
     }
@@ -59,11 +62,16 @@ $(function () {
         timer = setInterval(function () {
             index++;
             index = index == 8 ? 0 : index;
-            console.log(index);
             changeImg(index);
         }, 1500)
     }
 
     run();
+
+    $container.hover(function () {
+        clearInterval(timer);
+    }, function () {
+        run();
+    });
 
 });
