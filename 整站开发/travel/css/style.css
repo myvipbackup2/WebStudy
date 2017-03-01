@@ -324,15 +324,19 @@ body {
 }
 
 #slider .slider-img {
-    width: 510px;
+    width: 520px;
     height: 100px;
     margin: 0 auto;
     overflow: hidden;
+    position: relative;
 }
 
 #slider .small-img {
-    width: 976px;
+    width: 1056px;
     height: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 #slider .small-img li {
