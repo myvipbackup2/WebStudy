@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>showDialog</title>
+</head>
+<body>
+<script>
+    define(['jquery'], function ($) { //使用了require.js
+        function ShowDialog() {
+        }  //构造方法
+
+        ShowDialog.prototype.open = function (options) {
+
+            var setting = { //设置弹层默认样式
+                width: 400,//对话框宽度
+                height: 300,//对话框高度
+                title: '初始化中...',//对话框默认标题
+                content: '初始化中...'//对话框默认内容
+            };
+            $.extend(setting, options);  //合并两个对象的方法（options是传的参数）
+
+            var that = this;  //保存this的指向（this指向这个对象）
+            this.$container = $('<div class="modal-container"></div>');
+            var $mask = $('<div class="modal-mask"></div>').on('click', function () {
+                that.close();
+            });//遮罩层
+            var $main = $('<div class="modal-main"></div>').css({//设置对话框样式居中
+                width: setting.width,
+                height: setting.height,
+                marginLeft: -setting.width / 2,
+                marginTop: -setting.height / 2
+            });
+            var $modalTitle = $('<div class="modal-title clearfix"></div>');
+            var $title = $('<span class="fl">' + setting.title + '</span>');
+            var $close = $('<span class="fr">[X]</span>').on('click', function () {
+                that.close();
+            });
+            var $content = $('<div class="modal-content"></div>').append(setting.content);//插入对话框内荣
+
+            $modalTitle.append($title).append($close);
+            $main.append($modalTitle).append($content);
+            this.$container.append($mask).append($main);
+            $(document.body).append(this.$container.hide(0).fadeIn(600));
+
+        };
+
+        ShowDialog.prototype.close = function () {
+
+            var that = this;
+            this.$container.fadeOut(600, function () {
+                that.$container.remove(); //因为function的this的指向需要改变
+            });
+
+        };
+
+        return ShowDialog;
+
+    });
+</script>
+</body>
+</html>
