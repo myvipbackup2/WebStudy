@@ -4,6 +4,9 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var connect = require('gulp-connect');
+var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
+
 
 gulp.task('test1', function () {
     console.log('haha');
@@ -20,9 +23,10 @@ gulp.task('task1', function () {
     gulp.src('index.html').pipe(gulp.dest('./dest')).pipe(connect.reload());
 });
 
-//监测html变化
-gulp.task('watch-html', function () {
+//监测html和sass的变化
+gulp.task('watch', function () {
     gulp.watch('index.html', ['task1']);
+    gulp.watch('./src/*.scss', ['sass']);
 });
 
 gulp.task('copy-img', function () {
@@ -30,7 +34,7 @@ gulp.task('copy-img', function () {
 });
 
 gulp.task('sass', function () {
-    gulp.src('./src/*.scss').pipe(sass()).pipe(gulp.dest('./dest/css'));
+    gulp.src('./src/*.scss').pipe(sass()).pipe(gulp.dest('./dest/css')).pipe(connect.reload());
 });
 
 //创建一个本地服务
@@ -42,4 +46,11 @@ gulp.task('server', function () {
     })
 });
 
-gulp.task('run', ['server', 'watch-html']);
+gulp.task('run', ['server', 'watch']);
+
+gulp.task('concat', function () {
+    gulp.src(['./src/index.js','./src/main.js'])
+        .pipe(concat('bundle.js'))
+        .pipe()
+        .pipe(gulp.dest('dist/js'));
+});

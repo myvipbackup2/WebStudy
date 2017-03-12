@@ -22,9 +22,9 @@
         alert(aa);
         /*获取相应的对象下面的属性的值*/
         function getStyle(elem, prop){
-            if(elem.currentStyle){
+            if(elem.currentStyle){  //IE
                 return elem.currentStyle[prop];
-            }else if(getComputedStyle){
+            }else if(getComputedStyle){  //标准浏览器
                 return getComputedStyle(elem, null)[prop];
             }
         }
