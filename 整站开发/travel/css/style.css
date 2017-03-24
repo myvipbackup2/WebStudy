@@ -141,7 +141,7 @@ body {
 
 /*banner*/
 #banner {
-    background: url(../img/trip-banner.png) center center no-repeat;
+    background: url(http://onbtyf8pv.bkt.clouddn.com/trip-banner.png) center center no-repeat;
     height: 250px;
     -webkit-background-size: cover;
     background-size: cover;
@@ -259,6 +259,11 @@ body {
     position: relative;
     text-decoration: none;
     border-radius: 5px;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    -ms-transition: all .2s;
+    -o-transition: all .2s;
+    transition: all .2s;
 }
 
 #navBox .trip-action .btn-consultant:hover {
@@ -403,7 +408,7 @@ body {
 
 #slider .msg-states .states {
     float: left;
-    padding: 20px;
+    padding: 8px 20px;
     line-height: 24px;
 }
 
@@ -462,6 +467,11 @@ body {
     -moz-border-radius: 2px;
     border-radius: 2px;
     text-decoration: none;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    -ms-transition: all .2s;
+    -o-transition: all .2s;
+    transition: all .2s;
 }
 
 #slider .trip-consult .btn-consult:hover {
@@ -605,9 +615,14 @@ body {
     overflow: hidden;
 }
 
+.trip-tsList .ts-img img{
+    -webkit-background-size:cover;
+    background-size:cover;
+}
+
 .trip-tsList .ts-info {
-    background: #6ad3a3;
-    height: 120px;
+    background: #02a3cf;
+    /*height: 120px;*/
     padding: 12px 15px;
 }
 
@@ -622,7 +637,7 @@ body {
 }
 
 .trip-tsList .ts-city {
-    border-top: 1px solid #a4e8cc;
+    border-top: 1px solid #02a3cf;
     height: 20px;
     text-align: center;
     margin-bottom: 5px;
@@ -630,7 +645,7 @@ body {
 
 .trip-tsList .ts-city span {
     display: inline-block;
-    background: #6ad3a3;
+    background: #02a3cf;
     color: #d8f2e5;
     font-size: 12px;
     padding: 0 10px;
@@ -651,7 +666,7 @@ body {
 .trip-tsList .ts-desc {
     font-size: 12px;
     line-height: 20px;
-    height: 40px;
+    height: 220px;
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -737,22 +752,22 @@ body {
 
 /*footer*/
 .footer {
-    background: #2ba165;
-    padding: 5px 0px;
+    background: #0b499d;
+    padding: 5px 0;
     color: #FFF;
     font: 14px/24px "microsoft yahei";
     width: 100%;
 }
 
 .footer .footer-inner {
-    border-top: 1px solid #4fb17f;
-    border-bottom: 1px solid #4fb17f;
+    border-top: 1px solid #0b499d;
+    border-bottom: 1px solid #0b499d;
 }
 
 .footer .footer-box {
     width: 1180px;
     margin: 0 auto;
-    background: url(../img/footer-bg.png) right top no-repeat;
+    /*background: url(../img/footer-bg.png) right top no-repeat;*/
     padding: 30px 0;
 }
 
@@ -775,25 +790,25 @@ body {
     background: url(../img/header_v3_icon.png) 0 -122px no-repeat;
 }
 
-.footer .wx-box {
-    width: 206px;
-}
-
-.footer .icon-wx {
-    display: block;
-    width: 206px;
-    height: 103px;
-    background: url(../img/header_v3_icon.png) 0 -264px no-repeat;
-}
-
 .footer .foot-nav {
     font-size: 16px;
+    width: 895px;
+    line-height: 34px;
 }
 
 .footer .foot-nav a {
     color: #FFF;
     display: inline-block;
     padding: 0 5px;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    -ms-transition: all .2s;
+    -o-transition: all .2s;
+    transition: all .2s;
+}
+
+.footer .foot-nav a:hover{
+    color: #02a3cf;
 }
 
 .footer .foot-inf {
@@ -804,13 +819,6 @@ body {
 
 .footer .work-time {
     color: #b2d7c1;
-}
-
-.footer .icon-wx {
-    display: block;
-    width: 206px;
-    height: 103px;
-    background: url(../img/header_v3_icon.png) 0 -264px no-repeat;
 }
 
 .copyright {
