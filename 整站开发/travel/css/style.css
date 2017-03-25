@@ -492,7 +492,7 @@ body {
     float: left;
     width: 170px;
     text-align: center;
-    color: #0b499d;
+    color: #fff;
     padding-top: 8px;
 }
 
@@ -505,7 +505,7 @@ body {
     display: inline-block;
     width: 44px;
     height: 44px;
-    background-position: -67px -94px;
+    background: url("../img/star.png") no-repeat;
 }
 
 .trip-lightBox .lightBd {
@@ -548,7 +548,7 @@ body {
     width: 1px;
     height: 80px;
     font-size: 0;
-    background: #0b499d;
+    background: #f2f2f2;
     display: block;
     position: absolute;
     right: -1px;
@@ -588,9 +588,9 @@ body {
 }
 
 .trip-tsList ul li {
-    float: left;
+    /*float: left;*/
     display: block;
-    width: 276px;
+    /*width: 276px;*/
     margin-right: 25px;
     margin-bottom: 25px;
     -webkit-border-radius: 2px;
@@ -613,24 +613,25 @@ body {
     width: 276px;
     height: 184px;
     overflow: hidden;
+    float: left;
 }
 
-.trip-tsList .ts-img img{
-    -webkit-background-size:cover;
-    background-size:cover;
+.trip-tsList .ts-img img {
+    -webkit-background-size: cover;
+    background-size: cover;
 }
 
 .trip-tsList .ts-info {
     background: #02a3cf;
     /*height: 120px;*/
-    padding: 12px 15px;
+    padding: 4px 15px;
 }
 
 .trip-tsList .ts-spot {
     font-size: 18px;
     text-align: center;
     line-height: 30px;
-    margin-bottom: 20px;
+    margin: 20px auto;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -640,7 +641,7 @@ body {
     border-top: 1px solid #02a3cf;
     height: 20px;
     text-align: center;
-    margin-bottom: 5px;
+    /*margin-bottom: 5px;*/
 }
 
 .trip-tsList .ts-city span {
@@ -666,7 +667,8 @@ body {
 .trip-tsList .ts-desc {
     font-size: 12px;
     line-height: 20px;
-    height: 220px;
+    /*height: 220px;*/
+    padding: 10px 20px 15px;
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -807,7 +809,7 @@ body {
     transition: all .2s;
 }
 
-.footer .foot-nav a:hover{
+.footer .foot-nav a:hover {
     color: #02a3cf;
 }
 
