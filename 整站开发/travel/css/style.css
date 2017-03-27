@@ -124,7 +124,9 @@ body {
 #header .nav-right .tel {
     margin-left: 18px;
     display: inline-block;
-    background: url("../img/header_v3_icon.png") 0 -40px;
+    background: url("../img/tel.svg") no-repeat;
+    -webkit-background-size: 26px 26px;
+    background-size: 26px 26px;
     padding-left: 30px;
     height: 26px;
     font: 16px/28px Arial, Helvetica, sans-serif;
@@ -725,6 +727,15 @@ body {
 
 .links-item dd a {
     color: #b6b6b6;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    -ms-transition: all .2s;
+    -o-transition: all .2s;
+    transition: all .2s;
+}
+
+.links-item dd a:hover {
+    color: #333;
 }
 
 .links-line {
