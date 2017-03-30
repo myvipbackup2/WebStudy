@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+    <link href="//cdn.bootcss.com/cropper/3.0.0-alpha.1/cropper.min.css" rel="stylesheet">
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="//cdn.bootcss.com/cropper/3.0.0-alpha.1/cropper.min.js"></script>
+
+    <style>
+        .wrap {
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+
+
+<div class="wrap">
+    <img class="cropper" src="images/1.jpg">
+</div>
+
+
+<script>
+    $(".cropper").cropper({
+        aspectRatio: 1 / 1,
+        modal: false,
+        preview: ".extra-preview",
+        done: function (data) {
+            console.log(data);
+        }
+    });
+</script>
+</body>
+</html>
