@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>洗牌算法</title>
+</head>
+<body>
+
+<script>
+
+    //Fisher–Yates shuffle
+
+    //ES6
+    //    function shuffle(arr) {
+    //        let i = arr.length;
+    //        while (i) {
+    //            let j = Math.floor(Math.random() * i--);
+    //            [arr[j], arr[i]] = [arr[i], arr[j]];
+    //        }
+    //        return arr;
+    //    }
+
+    //ES5
+    function shuffle(arr) {
+        var i = arr.length, t, j;
+        while (i) {
+            j = Math.floor(Math.random() * i--);
+            t = arr[i];
+            arr[i] = arr[j];
+            arr[j] = t;
+        }
+        return arr;
+    }
+
+    var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+    var arr2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+    console.log(arr);
+    shuffle(arr);
+    arr2.sort(function () {
+        return Math.random() - 0.5;
+    });
+    console.log(arr);
+    console.log(arr2);
+
+</script>
+</body>
+</html>
