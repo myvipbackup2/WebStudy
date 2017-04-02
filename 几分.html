@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>客服积分</title>
+</head>
+<body>
+
+<script>
+
+    var num = 5;
+    var arr = [];
+    var score = 0;
+    var arr2 = [];
+
+    for (var i = 0; i < num; i++) {
+        arr[i] = prompt('请输入问题号和结果');
+    }
+
+    for (i = 0; i < num; i++) {
+        arr[i] = arr[i].split(' ');
+    }
+
+    for (i = 0; i < num; i++) {
+        arr2.push(arr[i][0]);
+        if (arr[i][1] == 1 && arr[i][2] == 1) {
+            score += 30;
+        }
+        if (arr[i][1] == 1 && arr[i][2] == 0) {
+            score += 10;
+        }
+    }
+
+    console.log(arr2.sort());
+    console.log(score);
+
+
+</script>
+</body>
+</html>
