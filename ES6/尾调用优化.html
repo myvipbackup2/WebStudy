@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>尾调用优化</title>
+</head>
+<body>
+<script>
+    //阶乘
+
+    //普通递归
+    function factorial(n) {
+        if (n === 1)return 1;
+        return n * factorial(n - 1);
+    }
+    console.log(factorial(5)); //复杂度n(0)
+
+    //尾递归
+    function factorial2(n, total = 1) {  //使用ES6默认参数
+        if (n === 1)return total;
+        return factorial2(n - 1, n * total);
+    }
+    console.log(factorial2(5));//只保留一个调用记录，复杂度n(1)
+
+</script>
+</body>
+</html>
