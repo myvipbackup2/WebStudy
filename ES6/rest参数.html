@@ -38,9 +38,22 @@ add(2, 5, 3) // 10
     //    拷贝数组
     let items = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     const itemsCopy = [...items];
-    items = [1, 2,3];
-    console.log('copy:'+itemsCopy);
+    items = [1, 2, 3];
+    console.log('copy:' + itemsCopy);
     console.log(items);
+
+    //    不要在函数体内使用arguments变量，使用rest运算符（...）代替。因为rest运算符显式表明你想要获取参数，而且arguments是一个类似数组的对象，而rest运算符可以提供一个真正的数组。
+
+    // bad
+    function concatenateAll() {
+        const args = Array.prototype.slice.call(arguments);
+        return args.join('');
+    }
+
+    // good
+    function concatenateAll(...args) {
+        return args.join('');
+    }
 
 </script>
 </body>

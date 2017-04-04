@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Set和Map数据结构</title>
+</head>
+<body>
+<script>
+    /*ES6 提供了新的数据结构 Set。它类似于数组，但是成员的值都是唯一的，没有重复的值。
+     Set 本身是一个构造函数，用来生成 Set 数据结构。*/
+    const arr = [1, 2, 3, 4, 1, 1, 3, 4, 21, 1];
+    console.log([...new Set(arr)]); //数组去重
+
+    //另外，两个对象总是不相等的。
+    const set = new Set();
+    set.add({});
+    set.add({});
+    console.log(set.size);
+
+    let s = new Set();
+    s.add(1).add(2).add(2);
+    // 注意2被加入了两次
+
+    console.log(s.size); // 2
+
+    s.has(1); // true
+    s.has(2); // true
+    s.has(3); // false
+
+    s.delete(2);
+    s.has(2); // false
+
+    //    keys()：返回键名的遍历器
+    //    values()：返回键值的遍历器
+    //    entries()：返回键值对的遍历器
+    //    forEach()：使用回调函数遍历每个成员
+
+    //    由于 Set 结构没有键名，只有键值（或者说键名和键值是同一个值），所以keys方法和values方法的行为完全一致。
+    let test = new Set(['red', 'blue', 'pink', 'yellow']);
+
+    for (let item of test.keys()) {
+        console.log(item);
+    }
+
+    for (let item of test.values()) {
+        console.log(item);
+    }
+
+    for (let item of test.entries()) {
+        console.log(item);
+    }
+
+    console.log(Array.from(test));
+
+</script>
+</body>
+</html>

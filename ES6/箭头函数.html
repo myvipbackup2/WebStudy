@@ -13,15 +13,56 @@
     console.log(test);
 
     //ES6箭头函数
-    let test2 = [1,2,3].map(x=>x*x);
+    let test2 = [1, 2, 3].map(x => x * x);
     console.log(test2);
 
     const numbers = (...num) => num;
-    console.log(numbers(1,2,3,4,5,6,7,8));
+    console.log(numbers(1, 2, 3, 4, 5, 6, 7, 8));
 
     console.log(test2.toString());
 
     //箭头函数不可以当做构造函数，函数体内的this对象就是定义时所在对象，而不是使用时的所在对象
+
+
+    //    立即执行函数可以写成箭头函数的形式。
+
+    (function () { //bad
+        console.log('Welcome to the Internet.');
+    })();
+
+    (() => {  //good
+        console.log('Welcome to the Internet.');
+    })();
+
+    // bad
+    [1, 2, 3].map(function (x) {
+        return x * x;
+    });
+
+    // good
+    [1, 2, 3].map((x) => {
+        return x * x;
+    });
+
+    // best
+    [1, 2, 3].map(x => x * x);
+
+    //箭头函数取代Function.prototype.bind，不应再用self/_this/that绑定 this
+
+    // bad
+    const self = this;
+    const boundMethod = function (...params) {
+        return method.apply(self, params);
+    };
+
+    // acceptable
+    const boundMethod = method.bind(this);
+
+    // best
+    const boundMethod = (...params) => method.apply(this, params);
+
+
+
 </script>
 </body>
 </html>
