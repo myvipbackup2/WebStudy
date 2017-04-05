@@ -61,7 +61,21 @@
     // best
     const boundMethod = (...params) => method.apply(this, params);
 
+    function union1() {
+        let params = Array.from(arguments);
+        return params.reduce((pre, cur) => {
+            return new Set([...pre, ...cur]);
+        })
+    }
+    // 测试
+    console.log(union1([123, 123], [456, 456], [345, 345]));
 
+    function intersect1() {
+        let params = Array.from(arguments);
+        return params.reduce((pre, cur) => {
+            return new Set([...cur].filter(val => 'has' in pre ? pre.has(val) : pre.includes(val)));
+        })
+    }
 
 </script>
 </body>
