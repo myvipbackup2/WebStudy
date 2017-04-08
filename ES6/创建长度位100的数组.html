@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>创建长度为100的数组</title>
+</head>
+<body>
+<script>
+    console.log([...new Array(100).keys()]);
+
+    console.log(Object.keys(Array.from({length: 100})));
+    // ["0", "1", "2", ..., "98", "99"]
+</script>
+</body>
+</html>
