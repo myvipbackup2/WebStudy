@@ -63,6 +63,22 @@
     let [p, q = "aaa"] = ["bbb", undefined];
     console.log(p);	//bbb
 
+    let [a4, b4, c4] = new Set(["a", "b", "c"]);
+    console.log(a4);	//a
+    console.log(b4);	//b
+    console.log(c4);	//c
+
+    function* fibs() {
+        let a = 0;
+        let b = 1;
+        while (true) {
+            yield a;
+            [a, b] = [b, a + b];
+        }
+    };
+    let [first1, second1, third1, fourth1, fifth1, sixth1] = fibs();
+    console.log(sixth1);	//5
+
 </script>
 </body>
 </html>
