@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>深度冻结对象</title>
+</head>
+<body>
+
+<script>
+
+    const constantize = (obj) => {
+        Object.freeze(obj);
+        Object.keys(obj).forEach((key, val) => {
+            if (typeof obj[key] === 'object') {
+                constantize(obj[key]);  //递归调用本身
+            }
+        });
+    };
+
+    // 想让一个对象变的完全冻结,冻结所有对象中的对象,我们可以使用下面的函数.
+
+    //Object.keys() 方法会返回一个由给定对象的自身可枚举属性组成的数组，数组中属性名的排列顺序和使用 for...in 循环遍历该对象时返回的顺序一致 （两者的主要区别是 一个 for-in 循环还会枚举其原型链上的属性）。
+
+    function deepFreeze(o) {
+        let prop, propKey;
+        Object.freeze(o); // 首先冻结第一层对象.
+        for (propKey in o) {
+            prop = o[propKey];
+            if (!o.hasOwnProperty(propKey) || !(typeof prop === "object") || Object.isFrozen(prop)) {
+                // 跳过原型链上的属性和已冻结的对象.
+                continue;
+            }
+            deepFreeze(prop); //递归调用.
+        }
+    }
+
+
+    const obj2 = {
+        internal: {}
+    };
+
+    //    console.log(obj2.internal);
+
+
+    //    constantize(obj2);
+    deepFreeze(obj2);
+
+    obj2.internal.a = "anotherValue";
+
+    console.log(obj2.internal)
+
+
+</script>
+
+</body>
+</html>
