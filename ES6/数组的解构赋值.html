@@ -37,14 +37,31 @@
     console.log(first);	//100
     console.log(second);//undefined
 
-    let [x, y] = [1, 2, 3];
-    console.log(x);	//1
-    console.log(y);	//2
+    let [x3, y3] = [1, 2, 3];
+    console.log(x3);	//1
+    console.log(y3);	//2
 
     let [a2, [b2], c2] = [1, [2, 3], 4];
     console.log(a2);	//1
     console.log(b2);	//2 不是2，3
     console.log(c2);	//4
+
+    let [temp3 = "string"] = [];
+    console.log(temp3);	//string
+
+    let [temp4 = "string"] = ["tempString"];
+    console.log(temp4);	//tempString
+
+    let [x = "aaa", y] = ["bbb"];
+    console.log(x);	//bbb
+    console.log(y);	//undefined
+
+    let [m, n = "aaa"] = ["bbb"];
+    console.log(m);	//bbb
+    console.log(n);	//aaa
+
+    let [p, q = "aaa"] = ["bbb", undefined];
+    console.log(p);	//bbb
 
 </script>
 </body>
