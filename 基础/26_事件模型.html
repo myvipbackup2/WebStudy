@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件模型</title>
+</head>
+<body>
+<ol>
+    <li>捕获阶段</li>
+    <li>目标阶段</li>
+    <li>冒泡阶段</li>
+</ol>
+
+111先再222
+
+<a href="javascript:alert(222)">Click Me</a>
+
+<script>
+    document.addEventListener('click', function (e) {
+        alert(111);
+    }, true);
+</script>
+
+</body>
+</html>
