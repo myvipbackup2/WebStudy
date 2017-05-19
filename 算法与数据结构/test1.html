@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>生育模型</title>
+</head>
+<body>
+<script>
+
+    var p = 105 / 205;  //生育男孩的概率
+    var f = 5; //女性每隔f年可以再生育一胎
+
+    function y(i) {
+        return (i - 1) * (1 - p) + (i - 1 - f) * p * (1 - p) + (i - 1 - f) * (1 - p) * (1 - p);
+    }
+
+    function x(i) {
+        return y(i - 1) * p + y(i - 1 - f) * p * p + y(i - 1 - f) * (1 - p) * p;
+    }
+
+    for (var i = 7; i < 11; i++) {
+        console.log('男孩:' + i + '年后,1岁男孩的个数:' + x(i));
+        console.log('女孩:' + i + '年后,1岁女孩的个数:' + y(i));
+    }
+
+</script>
+</body>
+</html>
