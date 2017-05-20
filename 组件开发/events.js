@@ -107,3 +107,16 @@ var events = {
 };
 
 module.exports = events;
+
+
+/*
+ try catch 感觉没必要吧，该报错给他自己报错吧
+ splice后，可以判断cbs.length删除_listenerMap[type]， undo可能要判断下，有可能被删了
+ splice可以用spliceOne，效率高点
+ function spliceOne(list, index) {
+ for (var i = index, k = i + 1, n = list.length; k < n; i += 1, k += 1) {
+ list[i] = list[k];
+ }
+ list.pop();
+ }
+ */
