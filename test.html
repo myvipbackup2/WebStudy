@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <style>
+        .source{
+            width: 100%;
+            /*background: cornflowerblue;*/
+            display: flex;
+            flex-direction: column;
+        }
+        .q-radio {
+            border-bottom: 1px solid skyblue;
+            color: #1f2d3d;
+            position: relative;
+            cursor: pointer;
+            display: inline-block;
+            white-space: nowrap;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
+        .q-radio__input {
+            white-space: nowrap;
+            cursor: pointer;
+            outline: none;
+            display: inline-block;
+            line-height: 1;
+            position: relative;
+            vertical-align: middle;
+        }
+        .q-radio__input.is-checked .q-radio__inner {
+            border-color: #20a0ff;
+            background: #20a0ff;
+        }
+        .q-radio__inner {
+            border: 1px solid #bfcbd9;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background-color: #fff;
+            position: relative;
+            cursor: pointer;
+            display: inline-block;
+            box-sizing: border-box;
+        }
+
+        .q-radio__input.is-checked .q-radio__inner:after {
+            transform: translate(-50%,-50%) scale(1);
+        }
+
+        .q-radio__original {
+            opacity: 0;
+            outline: none;
+            position: absolute;
+            z-index: -1;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: 0;
+        }
+        .q-radio__label {
+            font-size: 14px;
+            padding-left: 5px;
+        }
+        .isChecked{
+            border-color: #20a0ff;
+            background: #20a0ff;
+            /*border-radius: 50%;*/
+        }
+    </style>
+</head>
+<body>
+<div class="source">
+    <label class="q-radio radio">
+        <span class="q-radio__label">sxz <br/>登录名 180****3735</span>
+        <span class="q-radio__input qIput">
+            <span class="q-radio__inner"></span>
+            <input type="radio" class="q-radio__original" value="1">
+        </span>
+    </label>
+    <label class="q-radio radio">
+        <span class="q-radio__label">sxz <br/>登录名 180****3735</span>
+        <span class="q-radio__input qIput">
+            <span class="q-radio__inner"></span>
+            <input type="radio" class="q-radio__original" value="2">
+        </span>
+    </label>
+</div>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $(function(){
+        $('.source .q-radio').on('click',function () {
+            $('.q-radio__input.qIput').removeClass('isChecked');
+            $(this).find('.q-radio__input.qIput').addClass('isChecked');
+        })
+
+    })
+</script>
+</body>
+</html>
