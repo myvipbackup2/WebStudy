@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>浏览器解析excel</title>
+</head>
+<body>
+
+<input id="fileInput"
+       onchange="importFile(this)"
+       type="file"
+       accept="application/vnd.llamagraphics.life-balance.exchange+xml">
+<hr>
+<code id="data"></code>
+
+<!--Since the library uses functions like Array#forEach, older browsers require shims to provide missing functions.-->
+<!-- add the shim first -->
+<script src="//cdn.bootcss.com/xlsx/0.11.14/shim.min.js"></script>
+<!-- add the shim first -->
+<script src="//cdn.bootcss.com/xlsx/0.11.14/xlsx.full.min.js"></script>
+
+<script>
+  async function importFile (obj) {
+    if (!obj.files) {
+      return
+    }
+    let file = obj.files[0];
+    let dataCode = document.querySelector('#data');
+    console.log(file)
+    console.time('toBinaryString')
+    let dataFile = await toBinaryString(file)
+    console.timeEnd('toBinaryString')
+
+    //"binary"	string: binary string (byte n is data.charCodeAt(n))
+    let wb = XLSX.read(dataFile, { type: 'binary' });
+
+    console.log(wb)
+
+    //wb.SheetNames[0]是获取Sheets中第一个Sheet的名字
+    //wb.Sheets[Sheet名]获取第一个Sheet的数据
+    dataCode.innerHTML = JSON.stringify(XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]));
+
+
+  }
+
+  function toBinaryString (file) {
+    return new Promise((resolve, reject) => {
+      const fileRender = new FileReader();
+      fileRender.readAsBinaryString(file);
+      fileRender.onload = oFREvent => {
+        resolve(oFREvent.target.result)
+      };
+      fileRender.onerror = oFREvent => {
+        reject(oFREvent)
+      };
+    })
+  }
+
+
+</script>
+</body>
+</html>
