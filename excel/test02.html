@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>浏览器解析excel</title>
+        <link href="https://cdn.bootcss.com/element-ui/2.0.9/theme-chalk/index.css" rel="stylesheet">
+    </head>
+    <body>
+
+        <input id="fileInput"
+               onchange="importFile(this)"
+               type="file"
+               accept="application/vnd.llamagraphics.life-balance.exchange+xml">
+
+        <hr>
+
+        <div id="app">
+
+            <el-upload
+                    class="upload-demo"
+                    ref="upload"
+                    action="https://jsonplaceholder.typicode.com/posts/"
+                    :on-preview="handlePreview"
+                    :on-remove="handleRemove"
+                    :file-list="fileList"
+                    :auto-upload="false">
+                <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
+                <el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload">上传到服务器
+                </el-button>
+                <div slot="tip" class="el-upload__tip">只能上传Excel文件，且不超过20Mb</div>
+            </el-upload>
+
+        </div>
+
+        <hr>
+
+        <script src="https://cdn.bootcss.com/vue/2.5.13/vue.min.js"></script>
+        <script src="https://cdn.bootcss.com/element-ui/2.0.9/index.js"></script>
+        <!--Since the library uses functions like Array#forEach, older browsers require shims to provide missing functions.-->
+        <!-- add the shim first -->
+        <script src="https://cdn.bootcss.com/xlsx/0.11.14/shim.min.js"></script>
+        <!-- add the shim first -->
+        <script src="https://cdn.bootcss.com/xlsx/0.11.14/xlsx.full.min.js"></script>
+
+        <script>
+
+          new Vue({
+            el: '#app',
+            data() {
+              return {
+                fileList: [],
+              };
+            },
+            methods: {
+              submitUpload() {
+                this.importFile(this.$refs.upload)
+              },
+              handleRemove(file, fileList) {
+                console.log(file, fileList);
+              },
+              handlePreview(file) {
+                console.log(file);
+              },
+              async importFile(obj) {
+                console.log(obj.uploadFiles)
+                if (!obj.uploadFiles.length) {
+                  return
+                }
+                console.log(obj.uploadFiles)
+                let file = obj.uploadFiles[0];
+                let dataCode = document.querySelector('#data');
+                console.log(file)
+                console.time('toBinaryString')
+                let dataFile = await toBinaryString(file)
+                console.timeEnd('toBinaryString')
+
+                //"binary"	string: binary string (byte n is data.charCodeAt(n))
+                let wb = XLSX.read(dataFile, { type: 'binary' });
+
+                console.log(wb)
+
+                //wb.SheetNames[0]是获取Sheets中第一个Sheet的名字
+                //wb.Sheets[Sheet名]获取第一个Sheet的数据
+                dataCode.innerHTML = JSON.stringify(XLSX.utils.sheet_to_json(
+                  wb.Sheets[wb.SheetNames[0]]
+                ));
+
+                console.log(wb.Sheets[wb.SheetNames[0]])
+
+                // let sheets = wb.Sheets;
+                //
+                // for (let sheetName in sheets) {
+                //   console.log(sheetName)
+                // }
+              },
+              toBinaryString(file) {
+                return new Promise((resolve, reject) => {
+                  const fileRender = new FileReader();
+                  fileRender.readAsBinaryString(file);
+                  fileRender.onload = oFREvent => {
+                    resolve(oFREvent.target.result)
+                  };
+                  fileRender.onerror = oFREvent => {
+                    reject(oFREvent)
+                  };
+                })
+              }
+            }
+          })
+
+          async function importFile(obj) {
+            if (!obj.files) {
+              return
+            }
+            let file = obj.files[0];
+            let dataCode = document.querySelector('#data');
+            console.log(file)
+            console.time('toBinaryString')
+            let dataFile = await toBinaryString(file)
+            console.timeEnd('toBinaryString')
+
+            //"binary"	string: binary string (byte n is data.charCodeAt(n))
+            let wb = XLSX.read(dataFile, { type: 'binary' });
+
+            console.log(wb)
+
+            //wb.SheetNames[0]是获取Sheets中第一个Sheet的名字
+            //wb.Sheets[Sheet名]获取第一个Sheet的数据
+            dataCode.innerHTML = JSON.stringify(XLSX.utils.sheet_to_json(
+              wb.Sheets[wb.SheetNames[0]]
+            ));
+
+            console.log(wb.Sheets[wb.SheetNames[0]])
+
+            // let sheets = wb.Sheets;
+            //
+            // for (let sheetName in sheets) {
+            //   console.log(sheetName)
+            // }
+
+
+          }
+
+          function toBinaryString(file) {
+            return new Promise((resolve, reject) => {
+              const fileRender = new FileReader();
+              fileRender.readAsBinaryString(file);
+              fileRender.onload = oFREvent => {
+                resolve(oFREvent.target.result)
+              };
+              fileRender.onerror = oFREvent => {
+                reject(oFREvent)
+              };
+            })
+          }
+
+
+        </script>
+    </body>
+</html>

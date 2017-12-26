@@ -38,7 +38,17 @@
 
     //wb.SheetNames[0]是获取Sheets中第一个Sheet的名字
     //wb.Sheets[Sheet名]获取第一个Sheet的数据
-    dataCode.innerHTML = JSON.stringify(XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]));
+    dataCode.innerHTML = JSON.stringify(XLSX.utils.sheet_to_json(
+      wb.Sheets[wb.SheetNames[0]]
+    ));
+
+    console.log(wb.Sheets[wb.SheetNames[0]])
+
+    // let sheets = wb.Sheets;
+    //
+    // for (let sheetName in sheets) {
+    //   console.log(sheetName)
+    // }
 
 
   }
